@@ -22,6 +22,7 @@ extensions = [
     'myst_parser',
     'sphinx_markdown_tables',
     'sphinx_copybutton',
+    'recommonmark'
 ]
 
 intersphinx_mapping = {
@@ -42,7 +43,7 @@ html_theme = 'sphinx_rtd_theme'
 
 language='en'
 
-extensions = ['recommonmark']
+#extensions = ['recommonmark']
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
