@@ -9,41 +9,41 @@
 project = 'FGVClib'
 copyright = '2022, yyq'
 author = 'yyq'
-release = 'v2'
 
-# -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+release = '0.1'
+version = '0.1.0'
 
-extensions = []
-
-templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
-
-
-# -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
-#html_theme = 'alabaster'
-
-html_theme = 'sphinx_rtd_theme'
-html_static_path = ['_static']
-
+# -- General configuration
 
 extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
+    'myst_parser',
     'sphinx_markdown_tables',
-    'myst_parser'
+    'sphinx_copybutton',
 ]
 
-source_parsers = {
-    '.md': 'recommonmark.parser.CommonMarkParser',
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3/', None),
+    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
 }
+intersphinx_disabled_domains = ['std']
 
-source_suffix = ['.rst', '.md']
+templates_path = ['_templates']
 
-# multi-language docs
-language = 'en'
-locale_dirs = ['../locales/']   # path is example but recommended.
-gettext_compact = False  # optional.
-gettext_uuid = True  # optional
+
+# The master toctree document.
+master_doc = 'index'
+
+# -- Options for HTML output
+
+html_theme = 'sphinx_rtd_theme'
+
+language='en'
+
+extensions = ['recommonmark']
+
+# -- Options for EPUB output
+epub_show_urls = 'footnote'
 
