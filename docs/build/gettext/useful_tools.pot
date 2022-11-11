@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, yyq
+# This file is distributed under the same license as the FGVClib package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FGVClib \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-11 13:06+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../en/useful_tools.md:1
+#: 2e648a5e22f044b383e5f55c2deba871
+msgid "Learn about utils"
+msgstr ""
+
+#: ../../en/useful_tools.md:2
+#: 77b2bf75793f40939232f4bfaac45881
+msgid "We add some tools for the fgvc, and the tools are about interpreter, logger, learning rate schedules, updating strategy, and visualization."
+msgstr ""
+
+#: ../../en/useful_tools.md:4
+#: 9284542355fb4103aaabe9d5028ea564
+msgid "Interpreter"
+msgstr ""
+
+#: ../../en/useful_tools.md:6
+#: d197e2ad463f45dab45f5d0ceb0fb930
+msgid "We chose the class activation map tool. We design a class named CAM, the class actication map tool is for explaning the classification result. All methods are from (pytorch_grad_cam)[git@github.com:jacobgil/pytorch-grad-cam.git]. The methods are gradcam, hirescam, scorecam, gradcam++, xgradcam, eigencam, eigengrafcam, layercam, fullgrad, gradcamelementeise."
+msgstr ""
+
+#: ../../en/useful_tools.md:10
+#: cc446977c14646548f7302a8200b056f
+msgid "There are some args for the class CAM:"
+msgstr ""
+
+#: ../../en/useful_tools.md:12
+#: 4432a3a05455437680f7486b22ca24d3
+msgid "model (nn.Module): The FGVC model"
+msgstr ""
+
+#: ../../en/useful_tools.md:13
+#: 36b0071b7df6400f80a92cef39bffd47
+msgid "target_layers (list): The layers used to get CAM weights"
+msgstr ""
+
+#: ../../en/useful_tools.md:14
+#: 4cd14fad69ba4e1fbca402f7a9af7f76
+msgid "use_cuda (bool): Wheter use gpu"
+msgstr ""
+
+#: ../../en/useful_tools.md:15
+#: 7041d1f34aff4503a25cf78b64c82d65
+msgid "method (str): The available CAM methods"
+msgstr ""
+
+#: ../../en/useful_tools.md:16
+#: 6b6dfaf1c77d42bea808f5e61ecd00fc
+msgid "aug_smooth (str): The smooth method has the effect of better centering the CAM around the objects"
+msgstr ""
+
+#: ../../en/useful_tools.md:17
+#: 01eb4901997a4b388cb18e35b9e377eb
+msgid "eigen_smooth (str): The smooth method has the effect of removing a lot of noise."
+msgstr ""
+
+#: ../../en/useful_tools.md:19
+#: d710caa52b3a4e9080a0aae4236db00f
+msgid "In \"fgvclib/utils/interpreter/init.py\", we define a function named get_interpreter to return the interpreter with the given name. And the given name is cam."
+msgstr ""
+
+#: ../../en/useful_tools.md:36
+#: ../../en/useful_tools.md:75
+#: ../../en/useful_tools.md:125
+#: ../../en/useful_tools.md:163
+#: 67dfecdf2a4344569f8b690ca13162ee
+#: 004371bb072f41998ce50785c40b1a73
+#: 5ab2b22ba3064cf3946af6a9ca34b2c9
+#: db6e61d0113e4bfa803b9707b1cb1b00
+msgid "The example"
+msgstr ""
+
+#: ../../en/useful_tools.md:37
+#: 2e00baec39fb4ad28489c98d1e33b05d
+msgid "It is used to build interpreter."
+msgstr ""
+
+#: ../../en/useful_tools.md:52
+#: 1f30f4ce0da04bb3b08d4d07700e1ba9
+msgid "Logger"
+msgstr ""
+
+#: ../../en/useful_tools.md:54
+#: d65439bc53854319bedebe2a7e240de8
+msgid "We define two types logger, txt logger and wandb logger."
+msgstr ""
+
+#: ../../en/useful_tools.md:56
+#: c8173304322b4925a9829f68c850ef2f
+msgid "In \"fgvclib/utils/logger/init.py\" we define a function named get_logger to return the logger with the given name, and the given names are wandb_logger, txt_logger"
+msgstr ""
+
+#: ../../en/useful_tools.md:76
+#: d53e9ad1a0904a1c80237bf9d9bfd13e
+msgid "It can be used to build a logger object or generate the logger."
+msgstr ""
+
+#: ../../en/useful_tools.md:91
+#: 13979fc44658416fbaa9059ac3c18dff
+msgid "Learning rate schedules"
+msgstr ""
+
+#: ../../en/useful_tools.md:93
+#: b67277c388a6431abb75b9b5c71206f9
+msgid "In \"fgvclib/utils/lr_schedules/init.py\" we define a function named get_lr_schedule to return the learning rate schedule with the given name, and the given name is cosine_anneal_schedule."
+msgstr ""
+
+#: ../../en/useful_tools.md:112
+#: 7d610c8c2a974a94bbf48c09ff2d34c9
+msgid "And we define the function named cosine_anneal_schedule"
+msgstr ""
+
+#: ../../en/useful_tools.md:126
+#: ab22f152c2c14327b05e7ade95852753
+msgid "It can be used in the file main.py for the processing of training."
+msgstr ""
+
+#: ../../en/useful_tools.md:135
+#: b5d180052a7544019a2442fdcfc3aec5
+msgid "Update strategy"
+msgstr ""
+
+#: ../../en/useful_tools.md:136
+#: 69de5f7ac89c4d87b4d8beee4bbf719c
+msgid "We provide three types update strategy contructor methods, progressive updating with jigsaw, progressive updating consistency constraint, and general updating."
+msgstr ""
+
+#: ../../en/useful_tools.md:138
+#: bf3e9ebeb6f6431d938c9cd5955dd044
+msgid "progressive updating with jigsaw: For more details about progressive updating with jigsaw, see \"fgvclib/utils/update_strategy/progressibe_updating_with_jigsaw.py\"."
+msgstr ""
+
+#: ../../en/useful_tools.md:140
+#: 227b08abec994e879f0828de2e1785ef
+msgid "progressive updating consistency constraint: For more details about progressive updating consistency constraint, see \"fgvclib/utils/update_strategy/progressive_updating_consistency_constraint.py\"."
+msgstr ""
+
+#: ../../en/useful_tools.md:142
+#: 31b39ff822d04ff9b5675182206329a6
+msgid "general updating: For more details about general updating, see \"fgvclib/utils/update_strategy/general_updating.py\"."
+msgstr ""
+
+#: ../../en/useful_tools.md:144
+#: 02344ffb458047169c232e86d01a738d
+msgid "In \"fgvclib/utils/update_strategy/init.py\", we define a function named get_update_strategy to return the update stratrgy contructor method with the given name. And the given names are progressive_updating_with_jigsaw, progressive_updating_consistency_constraint, general_updating"
+msgstr ""
+
+#: ../../en/useful_tools.md:165
+#: 1e6aad74a6b44e9c9943fe64ce44a63e
+msgid "The update stratrgy contructor method is used to update the FGCV model, so we can import it when update model."
+msgstr ""
+
+#: ../../en/useful_tools.md:167
+#: 182f0805cd45415b9a99c36974b58b57
+msgid "In \"fgvclib/apis/update_model.py\", we import fgvclib.utils.update_strategy."
+msgstr ""
+
+#: ../../en/useful_tools.md:184
+#: a5795f20dcea47af91883084bbe508f9
+msgid "Visualization"
+msgstr ""
+
+#: ../../en/useful_tools.md:186
+#: e82c28340c4e40e7a09e6d52fcdcafbb
+msgid "We designed this module to visualize the results."
+msgstr ""

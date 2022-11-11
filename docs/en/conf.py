@@ -6,7 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'docs_fgvc'
+import sphinx_markdown_tables
+import sphinx_rtd_theme
+
+project = 'FGVClib'
 copyright = '2022, yyq'
 author = 'yyq'
 release = 'v1'
@@ -31,5 +34,12 @@ html_static_path = ['_static']
 
 extensions = [
      'recommonmark',
-     'sphinx-markdown-tables'
+     'sphinx_markdown_tables'
 ]
+
+# multi-language docs
+language = 'en'
+locale_dirs = ['../locales/']   # path is example but recommended.
+gettext_compact = False  # optional.
+gettext_uuid = True  # optional
+

@@ -1,0 +1,207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, yyq
+# This file is distributed under the same license as the FGVClib package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FGVClib \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-11 13:06+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../en/tutorials/tutorial3_criterions.md:1
+#: 1a115005bbe44bff8e6232002b21d4fa
+msgid "Tutorial 3: Learn about criterions"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:3
+#: e92fae5505b64b50b3b7fede00fb890a
+msgid "In this folder \"fgvclib/criterions\" we provide different loss functions for the fgvclib."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:5
+#: e8a364767c874a7883e74887aa0389aa
+msgid "We provide four loss functions, cross_entropy_loss, binary_cross_entropy_loss, mean_square_error_loss and mutual_channel_loss"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:34
+#: cd1b7461c9c5438780f8469a90f677ad
+msgid "Base loss function"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:36
+#: 8e3f39e040884802a9f58dc10c74266d
+msgid "cross_entropy_loss, binary_cross_entropy_loss, mean_square_error_loss are the base loss functions, and they are from PyTorch. \"fgvclib/criterions/base_loss.py\": provides the base loss functions."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:39
+#: 4f381ee07a2c4846b8e408b9bac1f6af
+msgid "cross_entropy_loss: Build the cross entropy loss function."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:40
+#: ../../en/tutorials/tutorial3_criterions.md:49
+#: ../../en/tutorials/tutorial3_criterions.md:58
+#: ../../en/tutorials/tutorial3_criterions.md:72
+#: ../../en/tutorials/tutorial3_criterions.md:83
+#: ../../en/tutorials/tutorial3_criterions.md:90
+#: ../../en/tutorials/tutorial3_criterions.md:99
+#: 24526c4c94ca42c09dca109e96ec5436
+#: 37db9f898b8d4a928c120d9a5c625dc4
+#: fe5bb6e4ddb444dfb171cb2595cd6fba
+#: a237602d78e34ff18d61dd46fca43ba5
+#: 87522bffa28848d195f04aa066bf0893
+#: e0b1922310d7416c88c02cbbc8c756c0
+#: 1e05c23fbc754ba1904968612902925e
+msgid "Args:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:42
+#: ../../en/tutorials/tutorial3_criterions.md:51
+#: ../../en/tutorials/tutorial3_criterions.md:60
+#: fed2815ffc41482792427d93b1b86eac
+#: cf2b4f10ffdc4423b216fd47120fe803
+#: 3ee664c658364158b71d7ca25d9a4a48
+msgid "cfg (CfgNode): The root node of config."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:44
+#: ../../en/tutorials/tutorial3_criterions.md:53
+#: ../../en/tutorials/tutorial3_criterions.md:62
+#: ../../en/tutorials/tutorial3_criterions.md:94
+#: ../../en/tutorials/tutorial3_criterions.md:103
+#: c936b491c0384e10b45187d982908204
+#: cab820f200ab4800b26d434bf62fb91f
+#: a74cb948230f4512ba43beb630248f09
+#: d5e86d0cd4934dcb91fd14591927e93a
+#: b50a1c2497f846a7a68e4f341c6a24fa
+msgid "Return:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:46
+#: ../../en/tutorials/tutorial3_criterions.md:55
+#: ../../en/tutorials/tutorial3_criterions.md:64
+#: 521bd5a431fb4fa4a9957106544d9878
+#: e0e41140214544948b584327e80834a9
+#: 2754d250d6284e98bcc31405b7920742
+msgid "nn.Module: The loss function."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:48
+#: bcb596fe7e5744e7bdade9d5e62baac5
+msgid "binary_cross_entropy_loss:Build the binary cross entropy loss function."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:57
+#: 4063e98033c84c038870293eac287618
+msgid "mean_square_error_loss: Build the mean square error loss function."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:66
+#: a5a130bb72a54a5083b956ddc7f0e8b3
+msgid "Mutual channel loss"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:68
+#: 9670a270b44e445ab4959437825a4bba
+msgid "\"fgvclib/criterions/mutual_channel_loss.py\": provides the mutual channel loss function which was proposed on \"The Devil is in the Channels: Mutual-Channel Loss for Fine-Grained Image Classification\"."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:70
+#: c4eeeaf4c1ad40d1b5d8870d7610933b
+msgid "class MutualChannelLoss: The mutual channel loss function."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:74
+#: 7050b679d86143adbe099501cdb82060
+msgid "height (int): The kernel size of average pooling. cnum (int): Channel numbers per class. div_weight (float): The weight for diversity part loss. dis_weight (float): The weight for discriminality part loss."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:79
+#: 69f796d329ab402cba3ee9a2e5792f19
+msgid "Utils"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:80
+#: a75b7206399243c28dd5733350926e1f
+msgid "In the \"fgvclib/criterions/utils.py\", we design a class named LossItem, and two functions, compute_loss_value and detach_loss_value."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:82
+#: b16b6729384b411c88771802aeaa7926
+msgid "LossItem: A dataclass object for store training loss"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:85
+#: 8ec9b782865b47ae8a4e84b26d52a776
+msgid "name (string): The loss item name. value (torch.Tensor): The value of loss. weight (float, optional): The weight of current loss item, default is 1.0."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:89
+#: 31f1c2cdacaa42b1af17527270ba8175
+msgid "compute_loss_value: A dataclass object for store training loss"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:92
+#: ../../en/tutorials/tutorial3_criterions.md:101
+#: 5e3b40b74a8f465ba4b5d46272eb3951
+#: 010eb4dc46a04d3aa4b8eecd33f8c413
+msgid "items (List[LossItem]): The loss items."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:96
+#: 7c8e3ab706654049af35a9aa69b7e343
+msgid "Tensor: The total loss value."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:98
+#: a25015cd460242d38370395147d3e1e3
+msgid "detach_loss_value: Detach loss value from GPU."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:105
+#: 62bdb8a03c114f62b8b60577b9479b9c
+msgid "Dict: A loss information dict whose key is loss name, value is loss value."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:107
+#: c718d97064994056a60f853a101a63b2
+msgid "The use of the criterions"
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:109
+#: ce18bd4542ca4acd99a49391c19f7b2b
+msgid "Build loss functions for training."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:110
+#: 9e684c7b243e4c03a458bf716bdf5829
+msgid "In the \"fgvclib/apis/build.py\", use the \"fgvclib.criterions\" to build loss functions for training. You can choose the loss function name criterion_cfg['name'] from  cross_entropy_loss, cross_entropy_loss, mean_square_error_loss and mutual_channel_loss."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:120
+#: e195aab0b6cc43fca5338b46b6e1ab0f
+msgid "Calculate loss functions."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:121
+#: 9164b75e963140f0b2245d0816a7fea4
+msgid "Following is about how to calculate the loss, and you can replace the loss functions."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:129
+#: 60f1a16987a74c4b827d3055b77b867e
+msgid "Define the forward."
+msgstr ""
+
+#: ../../en/tutorials/tutorial3_criterions.md:130
+#: ab7f2ace7aa94fffa920e2461892cac4
+msgid "Set the ResNet50 for example."
+msgstr ""

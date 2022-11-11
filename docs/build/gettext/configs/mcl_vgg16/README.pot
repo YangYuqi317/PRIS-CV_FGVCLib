@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, yyq
+# This file is distributed under the same license as the FGVClib package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FGVClib \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-11 13:06+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../en/configs/mcl_vgg16/README.md:1
+#: ../../en/configs/mcl_vgg16/README.md:3
+#: 5c8f0c9fde784b8398c64fc1aaef9456
+#: f4ca7f57f289459da79fff4b6ac23567
+msgid "MCL"
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:5
+#: f22914b4c9cf4858847b742d7b635c38
+msgid "Abstract"
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:7
+#: fdf26cf81ed7486a8a23fd6fa7497b69
+msgid "In this paper, wes show that it is possible to cultivate subtle details without the need for overly complicated network designs or training mechanisms – a single loss is all it takes. The main trick lies with how we delve into individual feature channels early on, as opposed to the convention of starting from a consolidated feature map. The proposed loss function, termed as mutual-channel loss (MC-Loss), consists of two channel-specific components: a discriminality component and a diversity component. The discriminality component forces all feature channels belonging to the same class to be discriminative, through a novel channel-wise attention mechanism. The diversity component additionally constraints channels so that they become mutually exclusive across the spatial dimension. The end result is therefore a set of feature channels, each of which reflects different locally discriminative regions for a specific class. The MC-Loss can be trained end-to-end, without the need for any bounding-box/part annotations, and yields highly discriminative regions during inference."
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:13
+#: 6bc0305c862842c4b8542de02c8c8304
+msgid "The framework of a typical fine-grained classification network where MC-Loss is used. The MC-Loss function considers the output feature channels of the last convolutional layer as the input and gathers together with the cross-entropy (CE) loss function using a hyper-parameter µ."
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:15
+#: 1028753c74d74cef91e0341a92594d59
+msgid "Introduction"
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:16
+#: da43629c035545a7b684fd5cea6d514f
+msgid "we propose the mutual-channel loss (MC-Loss) function to effectively navigate the model focusing on different discriminative regions without any fine-grained bounding-box/part annotations."
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:22
+#: 63043dd721084a4fa28afe4284de5b14
+msgid "CWA"
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:24
+#: 0de1a648e82d422b83e0cc8f64e94ac5
+msgid "While in case of traditional CNNs, trained with the classical CE loss objective, a certain subset of feature channels contain discriminative information, we here propose channelwise attention operation to enforce the network to equally capture discriminative information in all ξ channels corresponding to a particular class. Unlike other channel-wise-attention design that intends to assign higher priority to the discriminative channels using soft-attention values, we assign random binary weights to the channels and stochastically select a few feature channels from every feature group Fi during each iteration, thus explicitly encouraging every feature channel to contain sufficient discriminative information. This process could be visualized as a random channel-dropping operation. Please note that the CWA is used only during training and that the whole MC-Loss branch is not present at the time of inference. Therefore, the classification layer receives the same input feature distributions during both training and inference."
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:26
+#: aefaab240bbf46d89468505921b5802e
+msgid "CCMP"
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:28
+#: 4e04c8084b4b432c8993ef771d897438
+msgid "Cross-channel max pooling is used to compute the maximum response of each element across each feature channel in Fi corresponding to a particular class, and thus it results into a one dimensional vector of size WH concurring to a particular class. Note that the cross-channel average pooling (CCAP) is an alternative of the CCMP, which only substitutes the max pooling operation by the average pooling. However, the CCAP tends to average each element across the Ngroup which may suppress the peaks of feature channels, i.e., attentions of local regions. On the contrary, the CCMP can preserve these attentions, and is found to be beneficial for fine-grained classification."
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:30
+#: 965e8bcfc78b46e6a08443103139b13d
+msgid "GAP"
+msgstr ""
+
+#: ../../en/configs/mcl_vgg16/README.md:32
+#: 5bf1edc4f74d4ee08d546192be08dbe3
+msgid "Global average pooling is used to compute the average response of each feature channel, resulting in a c-dimensional vector where each element corresponds to one individual class."
+msgstr ""

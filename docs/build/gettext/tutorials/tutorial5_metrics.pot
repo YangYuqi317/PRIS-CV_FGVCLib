@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, yyq
+# This file is distributed under the same license as the FGVClib package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FGVClib \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-11 13:06+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../en/tutorials/tutorial5_metrics.md:1
+#: 9d6424202297455fb3c3fd61e02294fb
+msgid "Tutorial 5: Learn about metrics"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:3
+#: 4c39948a8912464293e155f2ee1c5cee
+msgid "We provide 3 metrics, accuracy, precision, recall as the results of training and testing. They are from the Torchmetrics, and in \"init\" we set the list of them __all__ = [\"accuracy\", \"precision\", \"recall\"]"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:5
+#: 5f0398e4d2e34451849e6fadd9b700a3
+msgid "For detailes about the meanings of the accuracy parameters, see torchmetrics.Accuracy object."
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:7
+#: d721929aef614decb34312eebdf4905c
+msgid "For detailes about the meanings of the precision parameters, see torchmetrics.Precision object."
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:9
+#: 5dcad6d0f8474b509c99009677f685ba
+msgid "For detailes about the meanings of the recall parameters, see torchmetrics.Recall object."
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:12
+#: fcb543f567364acea9f8f2010811342b
+msgid "Accuracy"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:13
+#: 248e527f363d4b03872d1a144b178296
+msgid "The accuracy is defined as accuracy(name:str=\"accuracy(top-1)\", top_k:int=1, threshold:float=None)"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:14
+#: ../../en/tutorials/tutorial5_metrics.md:27
+#: ../../en/tutorials/tutorial5_metrics.md:39
+#: a6296057e8714622986b4aa6d256512b
+#: 6c736a887b164d888f166fab6c6df99e
+#: d0fea36d8503496498797e20742539a1
+msgid "Args:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:16
+#: ../../en/tutorials/tutorial5_metrics.md:29
+#: ../../en/tutorials/tutorial5_metrics.md:41
+#: 842e0c45833d465b8c061427e2663969
+#: a24edf8c20974b6cb6069e652f42fe1d
+#: adda422e246e4c0aabb97a989de181c6
+msgid "\"name(str)\": The name of metric, e.g. accuracy(top-1) \"top_k (int)\": Number of the highest probability or logit score predictions considered finding the correct label. \"threshhold (float, optional)\": Threshold for transforming probability or logit predictions to binary (0,1) predictions, in the case of binary or multi-label inputs."
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:20
+#: ../../en/tutorials/tutorial5_metrics.md:33
+#: ../../en/tutorials/tutorial5_metrics.md:45
+#: f0df38395e644274b1eba2393c7a09a2
+#: 0e574033e7cd4e5a87b63f3a7f316717
+#: 9aa77a5c3420411ba2c93c1cae8f746a
+msgid "Return:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:22
+#: ../../en/tutorials/tutorial5_metrics.md:35
+#: ../../en/tutorials/tutorial5_metrics.md:47
+#: 97d1ba69f76b48feac267f73e02cb391
+#: b7a2d7900d894bdfb2b257edd6ebef78
+#: fe189f10d41945e1becdd8f7c3609197
+msgid "NamedMetirc: A torchmetrics metric with customed name."
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:25
+#: d818aed0456947c586c3361e3b3fd05c
+msgid "Precision"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:26
+#: 86f0169ef022445e8e5cf003edb631ca
+msgid "The precision is defined as precision(name:str=\"precision(threshold=0.5)\", top_k:int=None, threshold:float=0.5)"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:37
+#: ba2908f768b140d0bee66dbc945af64e
+msgid "Recall"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:38
+#: 37ae23631f31448ab845d579d81da1d6
+msgid "The recall is defined as recall(name:str=\"recall(threshold=0.5)\", top_k:int=None, threshold:float=0.5)"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:49
+#: 9f0b953cb4f649ff843840d0ec32c3d0
+msgid "The example"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:51
+#: 29fc4c03ca2c476cb2cfc16d21241709
+msgid "Build metrics for evaluation."
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:67
+#: 544580b2b2174264a6c74c2458383375
+msgid "Evaluate the FGVC model."
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:91
+#: ab23c41f96a34295ab4e84b0afc2aa1e
+msgid "Output the accuracy."
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:92
+#: 827eb2e720e4455daff32d909d89ff15
+msgid "In the processing of train:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial5_metrics.md:99
+#: a3d5b51f1f4c473a92c7cdb8e0226449
+msgid "In the processing of predict:"
+msgstr ""

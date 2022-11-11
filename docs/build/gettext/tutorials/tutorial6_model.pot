@@ -1,0 +1,388 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, yyq
+# This file is distributed under the same license as the FGVClib package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FGVClib \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-11 13:06+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../en/tutorials/tutorial6_model.md:1
+#: 1cffe9e6ea4e486cb93e83ec9c7bd8e7
+msgid "Tutorial 6: Learn about model"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:3
+#: f54400b49d4d4fba9d2d9e9c9777a12a
+msgid "In this part, we took the model apart and encapsulated each part of the model. We provide backbones, encoders, heads, necks, sotas, and utils for the model. You can select them separately to go to the component model."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:5
+#: 5e207ecaf33e4e86b1d58a83acd7949a
+msgid "Backbone: The backbone network most of time refers to the feature extraction network, its role is to extract the information in the picture, and then use the network, e.g. ResNet, VGG."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:6
+#: 7c3f9d5f356648b088371c501a0ba038
+msgid "Encoder: The pooling layer can reduce the space size of the data body, so that the number of parameters in the network can be reduced, so that the computing resource consumption is reduced, and the overfitting can be effectively controlled."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:7
+#: d9daf28f264742af8f63ff96c9ff2fe5
+msgid "Neck: The component between backbones and heads."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:8
+#: 7631f50b113347f1b4765ca552dd3aec
+msgid "Head: The component for specific tasks."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:9
+#: d7055b1ad30b46218be97c4dc496cf63
+msgid "Sotas: State-of-the-art model."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:11
+#: 5a61e6b8c04d4a16995c4ad07f607b96
+msgid "Backbone"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:12
+#: 0198ddbc374b4376babda12d68c6f4e9
+msgid "We mainly provide two categories backbone, ResNet and VGG."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:53
+#: e270d21025e54190b29417f23ca80b40
+msgid "In the fgvclib/models/backbones/init.py\", we define a function get_backbone to return the backbone with the givenname. The given names are resnet18, resnet34, resnet50, resnet101, resnet152, resnext50_32x4d, resnext101_32x8d, resnet50_bc, resnet101_bc, vgg11, vgg13, vgg16, vgg19"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:62
+#: f84b2b45fd6f45648cd44f95d6f07f7a
+msgid "ResNet"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:63
+#: d90c208f0f474f7f812957eb83167884
+msgid "We download the ResNet-x model from pytorch, and define the functions to construct the ResNet-x model."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:65
+#: aa1e162aed0a49808165b4f258381588
+msgid "resnet18:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:66
+#: ../../en/tutorials/tutorial6_model.md:106
+#: 0f114133df6c4bf6a9a464988f7474c9
+#: 0d319bd827644604a51fc286e99f307e
+msgid "Args:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:68
+#: ../../en/tutorials/tutorial6_model.md:108
+#: 760e9667d5604d3a8aa2f544f3d544ae
+#: c9a07b8b11d9492a8dac1a9c38d26907
+msgid "pretrained (bool): If True, returns a model pre-trained on ImageNet progress (bool): If True, displays a progress bar of the download to stderr"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:71
+#: ../../en/tutorials/tutorial6_model.md:81
+#: ../../en/tutorials/tutorial6_model.md:111
+#: b5913fd4ee5140a6925b00a1e0e25199
+#: c12312a631314eef95c12e7951e58936
+#: ce9c060593264df28cfd69ab0284d7b5
+msgid "Return:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:73
+#: a1c49bc898ab435192f0ed899a0dc7a5
+msgid "_resnet('resnet18', BasicBlock, [2, 2, 2, 2], cfg, progress, **kwargs)"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:75
+#: 3a51e16913f64618bdf86b43a146b4c0
+msgid "This function return the _resnet, and _resnet return the model. The _resnet has some input parameters about the model category."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:77
+#: cb30d6ba90314291ade3ac440c9e2b52
+msgid "Other backbones are similar to the resnet18, the difference lies on the return."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:79
+#: 565643bb1a08485eb97281aef4457b60
+msgid "resnet50_32x4d"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:83
+#: df10f81205c04ce48be2e7ebd2d40965
+msgid "_resnet('resnext50_32x4d', Bottleneck, [3, 4, 6, 3], cfg, progress=True, **kwargs)"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:85
+#: bb6a73e214594aff96c53c0cdb5befb9
+msgid "resnet50_32x4d needs to add the folllowing code:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:91
+#: a8cfc37847d34f518aa6ffc1ec43d60b
+msgid "resnet101_32x8d"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:93
+#: e8ee66f67f784dd4bdceb39914597e1f
+msgid "Return: _resnet('resnext101_32x8d', Bottleneck, [3, 4, 23, 3], cfg, progress=True, **kwargs)"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:96
+#: 97959b40d339458a8916b01644675a77
+msgid "resnet101_32x8d needs to add the folllowing code:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:102
+#: b92b3210ce1b4e8e91aa217cb9049382
+msgid "VGG"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:103
+#: 63d3462fdee64a5c832fbf4017c9bb28
+msgid "We download the VGG-x model from pytorch, and define the functions to construct the VGG-x model."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:105
+#: 3689b8d97a234957b8b2d5dd0e6f1209
+msgid "vgg11:"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:113
+#: e1f48fcf303b4c578647f9f90f5a00d9
+msgid "_vgg(\"vgg11\", cfg, progress)"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:115
+#: faa2731ea6fb4f73800a86745952ef2d
+msgid "This function return the _vgg, and _vgg return the model. The _vgg has some input parameters about the model category."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:117
+#: 335dca2aca734ae8955f9e777c5c9de9
+msgid "Other backbones are similar to the vgg11, the difference lies on the return."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:119
+#: ../../en/tutorials/tutorial6_model.md:161
+#: ../../en/tutorials/tutorial6_model.md:194
+#: ../../en/tutorials/tutorial6_model.md:231
+#: ../../en/tutorials/tutorial6_model.md:260
+#: 378c406b6a064cf5821c35a5e43d3281
+#: 4aeb32f2dd04408a8e3fd84fdf21d55a
+#: 88114c28ba3e4cf69337b84c11918b09
+#: 58a4150e54af47d380792b25ac18d6bb
+#: ada5691f4045460fbd8c2b514f5aba39
+msgid "The example"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:120
+#: 54b89e49135c4dbeb69435043da7ddb4
+msgid "When you need to build a FGVC model, you can use it to get a backbone. In the FGVCLib, we build a FGVC model according to config. For detailes about the configs , see FGVC Configs."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:123
+#: 917fc465282a40e099f708a5a03e35c7
+msgid "In fgvclib/apis/build.py, there is a function build_model to build a FGVC model according to config. In the model_cfg, we have set the backbone name."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:132
+#: 89316b1b54fc4aa78be924ff23d16604
+msgid "Encoders"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:133
+#: dbb9413954cc4eb486d04ac26abef67b
+msgid "We provide three kind of pooling layer, global average pooling, global max pooling and max pooling 2d."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:135
+#: 8b2af0cea3294da59fd25ff88879650d
+msgid "In the fgvclib/models/encoders/init.py\", we define a function get_encoding to return the encoder with the given name. And the given names are global_avg_pooling, global_max_pooling, max_pooling_2d"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:143
+#: a0ec8acf50e149439ab49b1339707f79
+msgid "Global average pooling"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:144
+#: 44cf7cc86fba4d4f9adebe1411cc60aa
+msgid "Firstly, we define a class named GlobalAvgPooling as global average pooling encoding. Then, we define a function named global_avg_pooling."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:147
+#: 5e468a82d8034035822634d215a9b300
+msgid "Global max pooling"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:148
+#: 645dbe4cbf9b430a96299f749f4313d6
+msgid "Firstly, we define a class named GlobalMaxPooling as global average pooling encoding. Then, we define a function named global_max_pooling."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:151
+#: 93a91b123b12439185b09bd69b8cae59
+msgid "Max pooling 2d"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:162
+#: 38ab471b70e64f95adc5cf94b68669f2
+msgid "When you need to build a FGVC model, you can use it to get a encoding. In the FGVCLib, we build a FGVC model according to config. For detailes about the configs , see FGVC Configs."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:165
+#: bd8cebfcc53e482aae58fb7530f3cefc
+msgid "In fgvclib/apis/build.py, there is a function build_model to build a FGVC model according to config. In the model_cfg, we have set the encoding name."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:177
+#: ee9113b8662049819f7d981baad29ccf
+msgid "Necks"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:178
+#: 4cd3eb0711ec45b8977e8c22de9ee4e8
+msgid "We provide one kind neck for the fgvclib, Multi-scale Convolution neck."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:180
+#: 7f6fc938074a4f52952452d6870ee465
+msgid "In the fgvclib/models/necks/init.py\", we define a function get_neck to return the neck with the given name. And the given name is multi_scale_conv."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:190
+#: 2eb04ea7717f4eda912d65b2445be915
+msgid "Multi-scale Convolution neck"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:191
+#: 8c1c95f715e248eab275ce186a9f00fc
+msgid "Firstly, we define a class named MultiScaleConv as a Multi-scale Convolution neck. Then, we define a function named multi_scale_conv."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:195
+#: 9dcb4d67cfc64de494cca19bb50e3b82
+msgid "When you need to build a FGVC model, you can use it to get a neck. In the FGVCLib, we build a FGVC model according to config. For detailes about the configs , see FGVC Configs."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:198
+#: 9ffdf21619c04950a88d8dc6deb34c3a
+msgid "In fgvclib/apis/build.py, there is a function build_model to build a FGVC model according to config. In the model_cfg, we have set the neck name."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:210
+#: ed04053547cc48109b18f8ba899016f0
+msgid "Heads"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:211
+#: 68775b32bfec44fc9cb83c6fdf589771
+msgid "We mainly provide two classifier, classifier_1fc, and classifier_2fc"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:213
+#: 4961479ec31b44328ff87209f6c08186
+msgid "In the fgvclib/models/heads/init.py\", we define a function get_head to return the head with the given name. And the given names are classifier_1fc, and classifier_2fc."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:223
+#: fa0d48cfd7514704a7bc42ed10a89647
+msgid "Classifier_1FC"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:224
+#: 4a10c979a7df4523ba334add5436bad4
+msgid "Firstly, we define a class named Classifier_1FC as a classifier with one fully connected layer. Then, we define a function named classifier_1fc."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:227
+#: 6d9266a5dc9547cda70951a55cad55cd
+msgid "Classifier_2FC"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:228
+#: f7592d92bda640c2b8d566faae8f1095
+msgid "Firstly, we define a class named Classifier_2FC as a classifier with two fully connected layer. Then, we define a function named classifier_2fc."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:232
+#: efdeefef22bf449b93277598fc83b47a
+msgid "When you need to build a FGVC model, you can use it to get a head. In the FGVCLib, we build a FGVC model according to config. For detailes about the configs , see FGVC Configs."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:235
+#: 193d4b2cbfb54e8eb8aff212e40db03f
+msgid "In fgvclib/apis/build.py, there is a function build_model to build a FGVC model according to config. In the model_cfg, we have set the head name."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:243
+#: 21393cb6efa34730913edb9a827cab9a
+msgid "Sotas"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:244
+#: edb77181e3814e5ebd19d714a0cea2db
+msgid "We reproduced state-of-the-art models, baseline_resnet50, mcl, pmg_resnet50, pmg_v2_resnet50."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:246
+#: 29728321c76b4a85b7c84d36b3042589
+msgid "In the fgvclib/models/sotas/init.py\", we define a function get_model to return the head with the given name. And the given names are PMG_ResNet50, PMG_V2_ResNet50, Baseline_ResNet50, MCL."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:256
+#: fc421b34ce6340af9c141b489dc24641
+msgid "Baseline_resnet50: Using the resnet50 as the backbone to build a model which is the baseline."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:257
+#: 0e70e3f04e1249a4bfded238662bf298
+msgid "MCL: This model was proposed in the paper \"The Devil is in the Channels: Mutual-Channel Loss for Fine-Grained Image Classification\", for more details about this method, seeMCL"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:258
+#: 5cd2c6181b6841cf80aee8387b910a0a
+msgid "PMG: This model was proposed in the paper \" Fine-Grained Visual Classiﬁcation via Progressive Multi-Granularity Training of Jigsaw Patches\", for more details about this method, see PMG"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:261
+#: 070c417b59f14d5e816f00fdda7b34ca
+msgid "When you need to build a FGVC model, you can use it to get a model. In the FGVCLib, we build a FGVC model according to config. For detailes about the configs , see FGVC Configs."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:264
+#: 4f086935fa1e489d8f3301d0e3692e06
+msgid "In fgvclib/apis/build.py, there is a function build_model to build a FGVC model according to config. In the model_cfg, we have set the model name."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:273
+#: c8b41817acb249428c3443f57ae346e8
+msgid "Build a model"
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:274
+#: 35ba1ce53519474ba145d3f959565ab5
+msgid "A model is made up backbone, encoder, neck, head, and loss. We take the model apart and you can combine them to build a new model or replicate other network. You should configure the model parameters in the configs in advance and then you can invoking these moudles to build model."
+msgstr ""
+
+#: ../../en/tutorials/tutorial6_model.md:276
+#: 3754f2e25dfc46838eff7263b3b2461c
+msgid "Take an example to show the process of building a model."
+msgstr ""

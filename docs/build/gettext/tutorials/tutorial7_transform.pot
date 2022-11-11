@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, yyq
+# This file is distributed under the same license as the FGVClib package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FGVClib \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-11 13:06+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../en/tutorials/tutorial7_transform.md:1
+#: 249503431252440a91fdc05d402ab909
+msgid "Tutorial 7: Learn about transforms"
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:3
+#: 0641607fbddc40efa63b00f822b7202a
+msgid "We import the transforms to process the image. We add six categories transform method, resize, random crop,center crop, random horizontal flip, to tensor. normaliza."
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:5
+#: 39731e8a629d4cdf90e8514adc2e7998
+msgid "Resize: Resize the input image to the given size. If the image is torch Tensor, it is expected to have […, H, W] shape, where … means an arbitrary number of leading dimensions."
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:6
+#: 74aba952e3a341d68a73028f1abde712
+msgid "Random crop: Crop the given image at a random location. If the image is torch Tensor, it is expected to have […, H, W] shape, where … means an arbitrary number of leading dimensions, but if non-constant padding is used, the input is expected to have at most 2 leading dimensions"
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:7
+#: b128fe29e0a847e1a78a86a165b6a430
+msgid "Center crop: Crops the given image at the center. If the image is torch Tensor, it is expected to have […, H, W] shape, where … means an arbitrary number of leading dimensions. If image size is smaller than output size along any edge, image is padded with 0 and then center cropped."
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:8
+#: f83878d6638f458e87c76bda9457b962
+msgid "Random horizontal flip: Horizontally flip the given image randomly with a given probability. If the image is torch Tensor, it is expected to have […, H, W] shape, where … means an arbitrary number of leading dimensions"
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:9
+#: ad8de7fbad5e4badaacd40e9b4838a65
+msgid "To tensor: Convert a PIL Image or numpy.ndarray to tensor. This transform does not support torchscript."
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:10
+#: ea034822e544411bbdd91be3712758d9
+msgid "Normalize: Normalize a tensor image with mean and standard deviation."
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:12
+#: 25da5c00d41e4a21b036960d8681ef89
+msgid "For more details about transforms, see torchvision.transforms"
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:14
+#: 57cc175360d14fd4845ab54746e3a018
+msgid "We import the torchvision and PIL to define the transform functions."
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:16
+#: 000f4aae03cd4649af61de991b903e11
+msgid "And in \"fgvclib/transforms/init.py\", we define the function get_transform to return the transforms with the given name. The given names are resize, center_crop, random_crop, random_horizontal_flip, to_tensor, normalize."
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:25
+#: c1cdf42fe8cf414eac43ec40fa8a5da3
+msgid "The example"
+msgstr ""
+
+#: ../../en/tutorials/tutorial7_transform.md:26
+#: 2a2c7555bb7c43c6a315d95540c80562
+msgid "The parameters about the network are saved in the configs in advance, so we can build transforms for train or test dataset according to config."
+msgstr ""
