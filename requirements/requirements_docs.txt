@@ -3,4 +3,4 @@ Sphinx
 sphinx-autobuild
 sphinx-markdown-tables
 sphinx-rtd-theme
-myst-parser
+myst_parser
