@@ -6,9 +6,6 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-import sphinx_markdown_tables
-import sphinx_rtd_theme
-
 project = 'FGVClib'
 copyright = '2022, yyq'
 author = 'yyq'
@@ -32,9 +29,10 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
+
 extensions = [
-     'recommonmark',
-     'sphinx_markdown_tables'
+    'sphinx_markdown_tables',
+    'recommonmark'
 ]
 
 # multi-language docs
