@@ -9,7 +9,7 @@
 project = 'FGVClib'
 copyright = '2022, yyq'
 author = 'yyq'
-release = 'v1'
+release = 'v2'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -31,7 +31,7 @@ html_static_path = ['_static']
 
 
 extensions = [
-    'sphinx-markdown-tables',
+    'sphinx_markdown_tables',
     'myst_parser'
 ]
 
