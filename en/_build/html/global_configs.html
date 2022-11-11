@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The conigs of the state-of-the-art methods &mdash; docs_fgvc v1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> docs_fgvc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_zoo.html">Benchmark and model zoo</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_exist_data_model.html">1: Train with the existing models and satndard datastes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_exist_data_model.html#prepare-datasets">Prepare datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_exist_data_new_model.html">2: Train with the new models and satndard datastes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial1_apis.html">Tutorial 1: Learn about apis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial2_configs.html">Tutorial 2: Learn about configs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial3_criterions.html">Tutorial 3: Learn about criterions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial4_datasets.html">Tutorial 4: Learn about datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial5_metrics.html">Tutorial 5: Learn about metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial6_model.html">Tutorial 6: Learn about model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial7_transform.html">Tutorial 7: Learn about transforms</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html">Learn about utils</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="switch_language.html"><a href='https://fgvclib-docs-yyq.readthedocs.io/en/latest/'>English</a></a></li>
+<li class="toctree-l1"><a class="reference internal" href="switch_language.html#a-herf-https-fgvclib-docs-yyq-readthedocs-io-zh-cn-latest-a"><a herf='https://fgvclib-docs-yyq.readthedocs.io/zh_CN/latest/'>简体中文</a></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">docs_fgvc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">The conigs of the state-of-the-art methods</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/global_configs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-conigs-of-the-state-of-the-art-methods">
+<h1>The conigs of the state-of-the-art methods<a class="headerlink" href="#the-conigs-of-the-state-of-the-art-methods" title="Permalink to this heading"></a></h1>
+<p>In “/configs/”, we write four file to save the configs of the state-of-the-art methods. And the file type is <code class="docutils literal notranslate"><span class="pre">.yml</span></code>
+The configs combine <code class="docutils literal notranslate"><span class="pre">experiment</span> <span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code>, <code class="docutils literal notranslate"><span class="pre">logger</span></code>, <code class="docutils literal notranslate"><span class="pre">dataset</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">transforms</span></code>, <code class="docutils literal notranslate"><span class="pre">optimizer</span></code>, and Validation details.</p>
+<p>Take the <strong>“baseline_resnet50”</strong> for example.</p>
+<ul>
+<li><p>Experiment name</p>
+<p><strong>EXP_NAME</strong>: the name of this method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EXP_NAME</span><span class="p">:</span> <span class="s2">&quot;Baseline_ResNet50&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Resume weight</p>
+<p><strong>RESUME_WEIGHT</strong> is set ~</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RESUME_WEIGHT</span><span class="p">:</span> <span class="o">~</span>
+</pre></div>
+</div>
+</li>
+<li><p>Logger</p>
+<p><strong>LOGGER</strong>: the logger of this process.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LOGGER</span><span class="p">:</span> 
+  <span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;txt_logger&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Dataset</p>
+<p><strong>DATASET</strong>: the dataset</p>
+<ul class="simple">
+<li><p>NAME: the name of the dataset</p></li>
+<li><p>ROOT: the root of the dataset, <strong>you should change it to your own root in advance</strong></p></li>
+<li><p>TRAIN: the parameters about the processing of training</p>
+<ul>
+<li><p>BATCH_SIZE: the batch size</p></li>
+<li><p>POSITIVE: the positive</p></li>
+<li><p>PIN_MEMORY: is bool, True or False</p></li>
+<li><p>SHUFFLE: is bool, True or False</p></li>
+<li><p>NUM_WORKERS: the number of workers</p></li>
+</ul>
+</li>
+<li><p>TEST: the parameters about the processing of testing</p>
+<ul>
+<li><p>BATCH_SIZE: the batch size</p></li>
+<li><p>POSITIVE: the positive</p></li>
+<li><p>PIN_MEMORY: is bool, True or False</p></li>
+<li><p>SHUFFLE: is bool, True or False</p></li>
+<li><p>NUM_WORKERS: the number of workers</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DATASET</span><span class="p">:</span>
+  <span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;CUB_200_2011&quot;</span>
+  <span class="n">ROOT</span><span class="p">:</span> <span class="s2">&quot;/data/wangxinran/dataset/&quot;</span>
+  <span class="n">TRAIN</span><span class="p">:</span> 
+    <span class="n">BATCH_SIZE</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="n">POSITIVE</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="n">PIN_MEMORY</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="n">SHUFFLE</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="n">NUM_WORKERS</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="n">TEST</span><span class="p">:</span> 
+    <span class="n">BATCH_SIZE</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="n">POSITIVE</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="n">PIN_MEMORY</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="n">SHUFFLE</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="n">NUM_WORKERS</span><span class="p">:</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Model</p>
+<p><strong>MODEL</strong>: the model</p>
+<ul class="simple">
+<li><p>NAME: the name of the model</p></li>
+<li><p>CLASS_NUM: the number of the class</p></li>
+<li><p>CRITERIONS: the loss</p>
+<ul>
+<li><p>name: the name of loss function</p></li>
+<li><p>args: the args are determined by loss</p></li>
+<li><p>w: the weight</p></li>
+</ul>
+</li>
+<li><p>BACKBONE: the backbone of the model, the parameters about the args are set according the corresonding file.</p>
+<ul>
+<li><p>NAME: the name of the bockbone</p></li>
+<li><p>ARGS:</p>
+<ul>
+<li><p>pretrained: is bool, True or False</p></li>
+<li><p>del_keys: is a list of the del_keys</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ENCODING: the encoding of the model, the parameters about the args are set according the corresonding file.</p>
+<ul>
+<li><p>NAME: the name of the encoding</p></li>
+</ul>
+</li>
+<li><p>NECKS: the neck of the model</p>
+<ul>
+<li><p>NAME: the name of the neck</p></li>
+</ul>
+</li>
+<li><p>HEADS: the head of the model, the parameters about the ARGS are set according the corresonding file.</p>
+<ul>
+<li><p>NAME: the name of the head</p></li>
+<li><p>ARGS: the args are determined by the classifier.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MODEL</span><span class="p">:</span>
+  <span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;ResNet50&quot;</span>
+  <span class="n">CLASS_NUM</span><span class="p">:</span> <span class="mi">200</span>
+  <span class="n">CRITERIONS</span><span class="p">:</span> 
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;cross_entropy_loss&quot;</span>
+      <span class="n">args</span><span class="p">:</span> <span class="p">[]</span>
+      <span class="n">w</span><span class="p">:</span> <span class="mf">1.0</span>
+  <span class="n">BACKBONE</span><span class="p">:</span>
+    <span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;resnet50&quot;</span>
+    <span class="n">ARGS</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">pretrained</span><span class="p">:</span> <span class="kc">True</span>
+      <span class="o">-</span> <span class="n">del_keys</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="n">ENCODING</span><span class="p">:</span>
+    <span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;global_avg_pooling&quot;</span>
+  <span class="n">NECKS</span><span class="p">:</span>
+    <span class="n">NAME</span><span class="p">:</span> <span class="o">~</span>
+  <span class="n">HEADS</span><span class="p">:</span>
+    <span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;classifier_1fc&quot;</span>
+    <span class="n">ARGS</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">in_dim</span><span class="p">:</span> 
+        <span class="o">-</span> <span class="mi">2048</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Transforms</p>
+<p><strong>TRANSFORMS</strong>: the transforms</p>
+<ul class="simple">
+<li><p>TRAIN: the parameters about the process of training</p>
+<ul>
+<li><p>name: the name of the transform type</p></li>
+<li><p>other parameters: according the transform type to set the corresonding parameters.</p></li>
+</ul>
+</li>
+<li><p>TEST: the parameters about the process of testing</p>
+<ul>
+<li><p>name: the name of the transform type</p></li>
+<li><p>other parameters: according the transform type to set the corresonding parameters.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TRANSFORMS</span><span class="p">:</span> 
+  <span class="n">TRAIN</span><span class="p">:</span> 
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;resize&quot;</span>
+      <span class="n">size</span><span class="p">:</span> 
+        <span class="o">-</span> <span class="mi">600</span>
+        <span class="o">-</span> <span class="mi">600</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;random_crop&quot;</span>
+      <span class="n">size</span><span class="p">:</span> <span class="mi">448</span>
+      <span class="n">padding</span><span class="p">:</span> <span class="mi">8</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;random_horizontal_flip&quot;</span>
+      <span class="n">prob</span><span class="p">:</span> <span class="mf">0.5</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;to_tensor&quot;</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;normalize&quot;</span>
+      <span class="n">mean</span><span class="p">:</span> 
+         <span class="o">-</span> <span class="mf">0.5</span>
+         <span class="o">-</span> <span class="mf">0.5</span>
+         <span class="o">-</span> <span class="mf">0.5</span>
+      <span class="n">std</span><span class="p">:</span> 
+        <span class="o">-</span> <span class="mf">0.5</span>
+        <span class="o">-</span> <span class="mf">0.5</span>
+        <span class="o">-</span> <span class="mf">0.5</span>
+  <span class="n">TEST</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;resize&quot;</span>
+      <span class="n">size</span><span class="p">:</span> 
+        <span class="o">-</span> <span class="mi">600</span>
+        <span class="o">-</span> <span class="mi">600</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;center_crop&quot;</span>
+      <span class="n">size</span><span class="p">:</span> <span class="mi">448</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;to_tensor&quot;</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;normalize&quot;</span>
+      <span class="n">mean</span><span class="p">:</span> 
+         <span class="o">-</span> <span class="mf">0.5</span>
+         <span class="o">-</span> <span class="mf">0.5</span>
+         <span class="o">-</span> <span class="mf">0.5</span>
+      <span class="n">std</span><span class="p">:</span> 
+        <span class="o">-</span> <span class="mf">0.5</span>
+        <span class="o">-</span> <span class="mf">0.5</span>
+        <span class="o">-</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Optimizer</p>
+<p><strong>OPTIMIZER</strong>: the optimizer</p>
+<ul class="simple">
+<li><p>NAME: the name of the optimizer</p></li>
+<li><p>MOMENTUM: the momentum of the optimizer</p></li>
+<li><p>LR: the learning rate</p>
+<ul>
+<li><p>backbone: the learning rate of the backbone</p></li>
+<li><p>encoding: the learning rate of the encoding</p></li>
+<li><p>necks: the learning rate of the neck</p></li>
+<li><p>heads: the learning rate of the head</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">OPTIMIZER</span><span class="p">:</span>
+  <span class="n">NAME</span><span class="p">:</span> <span class="s2">&quot;SGD&quot;</span>
+  <span class="n">MOMENTUM</span><span class="p">:</span> <span class="mf">0.9</span>
+  <span class="n">LR</span><span class="p">:</span> 
+    <span class="n">backbone</span><span class="p">:</span> <span class="mf">0.0002</span>
+    <span class="n">encoding</span><span class="p">:</span> <span class="mf">0.002</span>
+    <span class="n">necks</span><span class="p">:</span> <span class="mf">0.002</span>
+    <span class="n">heads</span><span class="p">:</span> <span class="mf">0.002</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Iteration number</p>
+<p><strong>ITERATION_NUM</strong>: the Iteration number</p>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ITERATION_NUM</span><span class="p">:</span> <span class="o">~</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Epoch number</p>
+<p><strong>EPOCH_NUM</strong>: the epcoh number</p>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">START_EPOCH</span><span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Update strategy</p>
+<p><strong>UPDATE_STRATEGY</strong>: the update strategy</p>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE_STRATEGY</span><span class="p">:</span> <span class="s2">&quot;general_updating&quot;</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Per iteration</p>
+<p><strong>PER_ITERATION</strong>: the per iteration</p>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PER_ITERATION</span><span class="p">:</span> <span class="o">~</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Per epoch</p>
+<p><strong>PER_EPOCH</strong>： the per per iteration</p>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PER_EPOCH</span><span class="p">:</span> <span class="o">~</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Metrics</p>
+<p><strong>METRICS</strong>: the metrics</p>
+<ul class="simple">
+<li><p>name: the name of the metric type</p></li>
+<li><p>other parameters: according the metrics type to set the corresonding parameters.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">METRICS</span><span class="p">:</span> 
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;accuracy(topk=1)&quot;</span>
+    <span class="n">metric</span><span class="p">:</span> <span class="s2">&quot;accuracy&quot;</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="o">~</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;accuracy(topk=5)&quot;</span>
+    <span class="n">metric</span><span class="p">:</span> <span class="s2">&quot;accuracy&quot;</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="mi">5</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="o">~</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;recall(threshold=0.5)&quot;</span>
+    <span class="n">metric</span><span class="p">:</span> <span class="s2">&quot;recall&quot;</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="o">~</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="mf">0.5</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;precision(threshold=0.5)&quot;</span>
+    <span class="n">metric</span><span class="p">:</span> <span class="s2">&quot;precision&quot;</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="o">~</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Interpreter</p>
+<p><strong>INTERPRETER</strong>: the interpreter</p>
+<ul class="simple">
+<li><p>NAME: the name of the interpreter</p></li>
+<li><p>METHOD: the method of the interpreter</p></li>
+<li><p>TARGET_LAYERS: the target layers</p></li>
+</ul>
+</li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, yyq.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

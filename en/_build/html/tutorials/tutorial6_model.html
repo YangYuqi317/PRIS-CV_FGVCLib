@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 6: Learn about model &mdash; docs_fgvc v1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial 7: Learn about transforms" href="tutorial7_transform.html" />
+    <link rel="prev" title="Tutorial 5: Learn about metrics" href="tutorial5_metrics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> docs_fgvc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo.html">Benchmark and model zoo</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_exist_data_model.html">1: Train with the existing models and satndard datastes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_exist_data_model.html#prepare-datasets">Prepare datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_exist_data_new_model.html">2: Train with the new models and satndard datastes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial1_apis.html">Tutorial 1: Learn about apis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2_configs.html">Tutorial 2: Learn about configs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3_criterions.html">Tutorial 3: Learn about criterions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial4_datasets.html">Tutorial 4: Learn about datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial5_metrics.html">Tutorial 5: Learn about metrics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial 6: Learn about model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#backbone">Backbone</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resnet">ResNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vgg">VGG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-example">The example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#encoders">Encoders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#global-average-pooling">Global average pooling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-max-pooling">Global max pooling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#max-pooling-2d">Max pooling 2d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">The example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#necks">Necks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multi-scale-convolution-neck">Multi-scale Convolution neck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">The example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#heads">Heads</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classifier-1fc">Classifier_1FC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classifier-2fc">Classifier_2FC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">The example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sotas">Sotas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">The example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build-a-model">Build a model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#take-an-example-to-show-the-process-of-building-a-model">Take an example to show the process of building a model.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial7_transform.html">Tutorial 7: Learn about transforms</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html">Learn about utils</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../switch_language.html"><a href='https://fgvclib-docs-yyq.readthedocs.io/en/latest/'>English</a></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../switch_language.html#a-herf-https-fgvclib-docs-yyq-readthedocs-io-zh-cn-latest-a"><a herf='https://fgvclib-docs-yyq.readthedocs.io/zh_CN/latest/'>简体中文</a></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">docs_fgvc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Tutorial 6: Learn about model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/tutorial6_model.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-6-learn-about-model">
+<h1>Tutorial 6: Learn about model<a class="headerlink" href="#tutorial-6-learn-about-model" title="Permalink to this heading"></a></h1>
+<p>In this part, we took the model apart and encapsulated each part of the model. We provide <code class="docutils literal notranslate"><span class="pre">backbones</span></code>, <code class="docutils literal notranslate"><span class="pre">encoders</span></code>, <code class="docutils literal notranslate"><span class="pre">heads</span></code>, <code class="docutils literal notranslate"><span class="pre">necks</span></code>, <code class="docutils literal notranslate"><span class="pre">sotas</span></code>, and <code class="docutils literal notranslate"><span class="pre">utils</span></code> for the model. You can select them separately to go to the component model.</p>
+<ul class="simple">
+<li><p><strong>Backbone</strong>: The backbone network most of time refers to the feature extraction network, its role is to extract the information in the picture, and then use the network, e.g. <strong>ResNet</strong>, <strong>VGG</strong>.</p></li>
+<li><p><strong>Encoder</strong>: The pooling layer can reduce the space size of the data body, so that the number of parameters in the network can be reduced, so that the computing resource consumption is reduced, and the overfitting can be effectively controlled.</p></li>
+<li><p><strong>Neck</strong>: The component between backbones and heads.</p></li>
+<li><p><strong>Head</strong>: The component for specific tasks.</p></li>
+<li><p><strong>Sotas</strong>: State-of-the-art model.</p></li>
+</ul>
+<section id="backbone">
+<h2>Backbone<a class="headerlink" href="#backbone" title="Permalink to this heading"></a></h2>
+<p>We mainly provide two categories backbone, ResNet and VGG.</p>
+<div align="center">
+  <b>Backbone</b>
+</div>
+<table align="center">
+  <tbody>
+    <tr align="center" valign="bottom">
+      <td>
+        <b>ResNet</b>
+      </td>
+      <td>
+        <b>VGG</b>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td>
+        <ul>
+          <li>resnet18</li>
+          <li>resnet34</li>
+          <li>resnet50</li>
+          <li>resnet101</li>
+          <li>resnet152</li>
+          <li>resnet50_32x4d</li>
+          <li>resnet101_32x8d</li>
+          <li>resnet50_bc</li>
+          <li>resnet101_bc</li>
+      </ul>
+      </td>
+      <td>
+        <ul>
+          <li>vgg11</li>
+          <li>vgg13</li>
+          <li>vgg16</li>
+          <li>vgg19</li>
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table><p>In the fgvclib/models/backbones/<strong>init</strong>.py”, we define a function <code class="docutils literal notranslate"><span class="pre">get_backbone</span></code> to return the backbone with the givenname. The given names are <code class="docutils literal notranslate"><span class="pre">resnet18</span></code>, <code class="docutils literal notranslate"><span class="pre">resnet34</span></code>, <code class="docutils literal notranslate"><span class="pre">resnet50</span></code>, <code class="docutils literal notranslate"><span class="pre">resnet101</span></code>, <code class="docutils literal notranslate"><span class="pre">resnet152</span></code>, <code class="docutils literal notranslate"><span class="pre">resnext50_32x4d</span></code>, <code class="docutils literal notranslate"><span class="pre">resnext101_32x8d</span></code>, <code class="docutils literal notranslate"><span class="pre">resnet50_bc</span></code>, <code class="docutils literal notranslate"><span class="pre">resnet101_bc</span></code>, <code class="docutils literal notranslate"><span class="pre">vgg11</span></code>, <code class="docutils literal notranslate"><span class="pre">vgg13</span></code>, <code class="docutils literal notranslate"><span class="pre">vgg16</span></code>, <code class="docutils literal notranslate"><span class="pre">vgg19</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_backbone</span><span class="p">(</span><span class="n">backbone_name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">backbone_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Backbone </span><span class="si">{</span><span class="n">backbone_name</span><span class="si">}</span><span class="s2"> not found!</span><span class="se">\n</span><span class="s2">Available backbones: </span><span class="si">{</span><span class="n">__all__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">backbone_name</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="resnet">
+<h3>ResNet<a class="headerlink" href="#resnet" title="Permalink to this heading"></a></h3>
+<p>We download the ResNet-x model from pytorch, and define the functions to construct the ResNet-x model.</p>
+<p><strong>resnet18:</strong></p>
+<ul>
+<li><p>Args:</p>
+<p>pretrained (bool): If True, returns a model pre-trained on ImageNet
+progress (bool): If True, displays a progress bar of the download to stderr</p>
+</li>
+<li><p>Return:</p>
+<p>_resnet(’resnet18’, BasicBlock, [2, 2, 2, 2], cfg, progress, **kwargs)</p>
+</li>
+</ul>
+<p>This function return the <code class="docutils literal notranslate"><span class="pre">_resnet</span></code>, and <code class="docutils literal notranslate"><span class="pre">_resnet</span></code> return the model. The <code class="docutils literal notranslate"><span class="pre">_resnet</span></code> has some input parameters about the model category.</p>
+<p>Other backbones are similar to the resnet18, the difference lies on the <strong>return</strong>.</p>
+<p><strong>resnet50_32x4d</strong></p>
+<ul>
+<li><p>Return:</p>
+<p>_resnet(’resnext50_32x4d’, Bottleneck, [3, 4, 6, 3], cfg, progress=True, **kwargs)</p>
+</li>
+</ul>
+<p>resnet50_32x4d needs to add the folllowing code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;width_per_group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p><strong>resnet101_32x8d</strong></p>
+<ul class="simple">
+<li><p>Return:
+_resnet(’resnext101_32x8d’, Bottleneck, [3, 4, 23, 3], cfg, progress=True, **kwargs)</p></li>
+</ul>
+<p>resnet101_32x8d needs to add the folllowing code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;width_per_group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</section>
+<section id="vgg">
+<h3>VGG<a class="headerlink" href="#vgg" title="Permalink to this heading"></a></h3>
+<p>We download the VGG-x model from pytorch, and define the functions to construct the VGG-x model.</p>
+<p><strong>vgg11:</strong></p>
+<ul>
+<li><p>Args:</p>
+<p>pretrained (bool): If True, returns a model pre-trained on ImageNet
+progress (bool): If True, displays a progress bar of the download to stderr</p>
+</li>
+<li><p>Return:</p>
+<p>_vgg(”vgg11”, cfg, progress)</p>
+</li>
+</ul>
+<p>This function return the <code class="docutils literal notranslate"><span class="pre">_vgg</span></code>, and <code class="docutils literal notranslate"><span class="pre">_vgg</span></code> return the model. The <code class="docutils literal notranslate"><span class="pre">_vgg</span></code> has some input parameters about the model category.</p>
+<p>Other backbones are similar to the vgg11, the difference lies on the <strong>return</strong>.</p>
+</section>
+<section id="the-example">
+<h3>The example<a class="headerlink" href="#the-example" title="Permalink to this heading"></a></h3>
+<p>When you need to build a FGVC model, you can use it to get a backbone.
+In the FGVCLib, we build a FGVC model according to config. For detailes about the <strong>configs</strong> , see <a class="reference external" href="https://torchmetrics.readthedocs.io/en/stable/classification/recall.html">FGVC Configs</a>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">fgvclib/apis/build.py</span></code>, there is a function build_model to build a FGVC model according to config. In the <code class="docutils literal notranslate"><span class="pre">model_cfg</span></code>, we have set the backbone name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fgvclib.models.backbones</span> <span class="kn">import</span> <span class="n">get_backbone</span>
+
+<span class="n">backbone_builder</span> <span class="o">=</span> <span class="n">get_backbone</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+<span class="n">backbone</span> <span class="o">=</span> <span class="n">backbone_builder</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">tltd</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGS</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="encoders">
+<h2>Encoders<a class="headerlink" href="#encoders" title="Permalink to this heading"></a></h2>
+<p>We provide three kind of pooling layer, <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">average</span> <span class="pre">pooling</span></code>, <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">max</span> <span class="pre">pooling</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">pooling</span> <span class="pre">2d</span></code>.</p>
+<p>In the fgvclib/models/encoders/<strong>init</strong>.py”, we define a function <code class="docutils literal notranslate"><span class="pre">get_encoding</span></code> to return the encoder with the given name. And the given names are <code class="docutils literal notranslate"><span class="pre">global_avg_pooling</span></code>, <code class="docutils literal notranslate"><span class="pre">global_max_pooling</span></code>, <code class="docutils literal notranslate"><span class="pre">max_pooling_2d</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_encoding</span><span class="p">(</span><span class="n">encoding_name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">encoding_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Encoding not found: </span><span class="si">{</span><span class="n">encoding_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">Available encodings: </span><span class="si">{</span><span class="n">__all__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">encoding_name</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="global-average-pooling">
+<h3>Global average pooling<a class="headerlink" href="#global-average-pooling" title="Permalink to this heading"></a></h3>
+<p>Firstly, we define a class named <code class="docutils literal notranslate"><span class="pre">GlobalAvgPooling</span></code> as global average pooling encoding.
+Then, we define a function named <code class="docutils literal notranslate"><span class="pre">global_avg_pooling</span></code>.</p>
+</section>
+<section id="global-max-pooling">
+<h3>Global max pooling<a class="headerlink" href="#global-max-pooling" title="Permalink to this heading"></a></h3>
+<p>Firstly, we define a class named <code class="docutils literal notranslate"><span class="pre">GlobalMaxPooling</span></code> as global average pooling encoding.
+Then, we define a function named <code class="docutils literal notranslate"><span class="pre">global_max_pooling</span></code>.</p>
+</section>
+<section id="max-pooling-2d">
+<h3>Max pooling 2d<a class="headerlink" href="#max-pooling-2d" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max_pooling_2d</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="s1">&#39;kernel_size&#39;</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;kernel_size&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> 
+    <span class="k">assert</span> <span class="s1">&#39;stride&#39;</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;stride&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;kernel_size&#39;</span><span class="p">],</span> <span class="n">stride</span><span class="o">=</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;stride&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>The example<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>When you need to build a FGVC model, you can use it to get a encoding.
+In the FGVCLib, we build a FGVC model according to config. For detailes about the <strong>configs</strong> , see <a class="reference external" href="https://torchmetrics.readthedocs.io/en/stable/classification/recall.html">FGVC Configs</a>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">fgvclib/apis/build.py</span></code>, there is a function build_model to build a FGVC model according to config. In the <code class="docutils literal notranslate"><span class="pre">model_cfg</span></code>, we have set the encoding name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fgvclib.models.encoders</span> <span class="kn">import</span> <span class="n">get_encoding</span>
+
+<span class="k">if</span> <span class="n">model_cfg</span><span class="o">.</span><span class="n">ENCODING</span><span class="o">.</span><span class="n">NAME</span><span class="p">:</span>
+        <span class="n">encoding_builder</span> <span class="o">=</span> <span class="n">get_encoding</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">ENCODING</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding_builder</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">tltd</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">ENCODING</span><span class="o">.</span><span class="n">ARGS</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="necks">
+<h2>Necks<a class="headerlink" href="#necks" title="Permalink to this heading"></a></h2>
+<p>We provide one kind neck for the fgvclib, <code class="docutils literal notranslate"><span class="pre">Multi-scale</span> <span class="pre">Convolution</span> <span class="pre">neck</span></code>.</p>
+<p>In the fgvclib/models/necks/<strong>init</strong>.py”, we define a function <code class="docutils literal notranslate"><span class="pre">get_neck</span></code> to return the neck with the given name. And the given name is <code class="docutils literal notranslate"><span class="pre">multi_scale_conv</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_neck</span><span class="p">(</span><span class="n">neck_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the backbone with the given name.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">neck_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neck not found: </span><span class="si">{</span><span class="n">neck_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">Available necks: </span><span class="si">{</span><span class="n">__all__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">neck_name</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="multi-scale-convolution-neck">
+<h3>Multi-scale Convolution neck<a class="headerlink" href="#multi-scale-convolution-neck" title="Permalink to this heading"></a></h3>
+<p>Firstly, we define a class named <code class="docutils literal notranslate"><span class="pre">MultiScaleConv</span></code> as a Multi-scale Convolution neck.
+Then, we define a function named <code class="docutils literal notranslate"><span class="pre">multi_scale_conv</span></code>.</p>
+</section>
+<section id="id2">
+<h3>The example<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>When you need to build a FGVC model, you can use it to get a neck.
+In the FGVCLib, we build a FGVC model according to config. For detailes about the <strong>configs</strong> , see <a class="reference external" href="https://torchmetrics.readthedocs.io/en/stable/classification/recall.html">FGVC Configs</a>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">fgvclib/apis/build.py</span></code>, there is a function build_model to build a FGVC model according to config. In the <code class="docutils literal notranslate"><span class="pre">model_cfg</span></code>, we have set the neck name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fgvclib.models.necks</span> <span class="kn">import</span> <span class="n">get_neck</span>
+
+<span class="k">if</span> <span class="n">model_cfg</span><span class="o">.</span><span class="n">NECKS</span><span class="o">.</span><span class="n">NAME</span><span class="p">:</span>
+    <span class="n">neck_builder</span> <span class="o">=</span> <span class="n">get_neck</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">NECKS</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+    <span class="n">necks</span> <span class="o">=</span> <span class="n">neck_builder</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">tltd</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">NECKS</span><span class="o">.</span><span class="n">ARGS</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">necks</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="heads">
+<h2>Heads<a class="headerlink" href="#heads" title="Permalink to this heading"></a></h2>
+<p>We mainly provide two classifier, <code class="docutils literal notranslate"><span class="pre">classifier_1fc</span></code>, and <code class="docutils literal notranslate"><span class="pre">classifier_2fc</span></code></p>
+<p>In the fgvclib/models/heads/<strong>init</strong>.py”, we define a function <code class="docutils literal notranslate"><span class="pre">get_head</span></code> to return the head with the given name. And the given names are <code class="docutils literal notranslate"><span class="pre">classifier_1fc</span></code>, and <code class="docutils literal notranslate"><span class="pre">classifier_2fc</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_head</span><span class="p">(</span><span class="n">head_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the backbone with the given name.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">head_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Head not found: </span><span class="si">{</span><span class="n">head_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">Available heads: </span><span class="si">{</span><span class="n">__all__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">head_name</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="classifier-1fc">
+<h3>Classifier_1FC<a class="headerlink" href="#classifier-1fc" title="Permalink to this heading"></a></h3>
+<p>Firstly, we define a class named <code class="docutils literal notranslate"><span class="pre">Classifier_1FC</span></code> as a classifier with one fully connected layer.
+Then, we define a function named <code class="docutils literal notranslate"><span class="pre">classifier_1fc</span></code>.</p>
+</section>
+<section id="classifier-2fc">
+<h3>Classifier_2FC<a class="headerlink" href="#classifier-2fc" title="Permalink to this heading"></a></h3>
+<p>Firstly, we define a class named <code class="docutils literal notranslate"><span class="pre">Classifier_2FC</span></code> as a classifier with two fully connected layer.
+Then, we define a function named <code class="docutils literal notranslate"><span class="pre">classifier_2fc</span></code>.</p>
+</section>
+<section id="id3">
+<h3>The example<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>When you need to build a FGVC model, you can use it to get a head.
+In the FGVCLib, we build a FGVC model according to config. For detailes about the <strong>configs</strong> , see <a class="reference external" href="https://torchmetrics.readthedocs.io/en/stable/classification/recall.html">FGVC Configs</a>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">fgvclib/apis/build.py</span></code>, there is a function build_model to build a FGVC model according to config. In the <code class="docutils literal notranslate"><span class="pre">model_cfg</span></code>, we have set the head name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fgvclib.models.heads</span> <span class="kn">import</span> <span class="n">get_head</span>
+
+<span class="n">head_builder</span> <span class="o">=</span> <span class="n">get_head</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">HEADS</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+    <span class="n">heads</span> <span class="o">=</span> <span class="n">head_builder</span><span class="p">(</span><span class="n">class_num</span><span class="o">=</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">CLASS_NUM</span><span class="p">,</span> <span class="n">cfg</span><span class="o">=</span><span class="n">tltd</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">HEADS</span><span class="o">.</span><span class="n">ARGS</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sotas">
+<h2>Sotas<a class="headerlink" href="#sotas" title="Permalink to this heading"></a></h2>
+<p>We reproduced state-of-the-art models, <code class="docutils literal notranslate"><span class="pre">baseline_resnet50</span></code>, <code class="docutils literal notranslate"><span class="pre">mcl</span></code>, <code class="docutils literal notranslate"><span class="pre">pmg_resnet50</span></code>, <code class="docutils literal notranslate"><span class="pre">pmg_v2_resnet50</span></code>.</p>
+<p>In the fgvclib/models/sotas/<strong>init</strong>.py”, we define a function <code class="docutils literal notranslate"><span class="pre">get_model</span></code> to return the head with the given name. And the given names are <code class="docutils literal notranslate"><span class="pre">PMG_ResNet50</span></code>, <code class="docutils literal notranslate"><span class="pre">PMG_V2_ResNet50</span></code>, <code class="docutils literal notranslate"><span class="pre">Baseline_ResNet50</span></code>, <code class="docutils literal notranslate"><span class="pre">MCL</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the model class with the given name.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">model_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> not found!</span><span class="se">\n</span><span class="s2">Available models: </span><span class="si">{</span><span class="n">__all__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">model_name</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Baseline_resnet50: Using the resnet50 as the backbone to build a model which is the baseline.</p></li>
+<li><p>MCL: This model was proposed in the paper “The Devil is in the Channels: Mutual-Channel Loss for Fine-Grained Image Classification”, for more details about this method, see<a class="reference external" href="https://arxiv.org/abs/2002.04264">MCL</a></p></li>
+<li><p>PMG: This model was proposed in the paper “ Fine-Grained Visual Classiﬁcation via Progressive Multi-Granularity Training of Jigsaw Patches”, for more details about this method, see <a class="reference external" href="https://arxiv.org/abs/2003.03836v3">PMG</a></p></li>
+</ul>
+<section id="id4">
+<h3>The example<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>When you need to build a FGVC model, you can use it to get a model.
+In the FGVCLib, we build a FGVC model according to config. For detailes about the <strong>configs</strong> , see <a class="reference external" href="https://torchmetrics.readthedocs.io/en/stable/classification/recall.html">FGVC Configs</a>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">fgvclib/apis/build.py</span></code>, there is a function build_model to build a FGVC model according to config. In the <code class="docutils literal notranslate"><span class="pre">model_cfg</span></code>, we have set the model name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fgvclib.models.sotas</span> <span class="kn">import</span> <span class="n">get_model</span>
+
+<span class="n">model_builder</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model_builder</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="n">backbone</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">necks</span><span class="o">=</span><span class="n">necks</span><span class="p">,</span> <span class="n">heads</span><span class="o">=</span><span class="n">heads</span><span class="p">,</span> <span class="n">criterions</span><span class="o">=</span><span class="n">criterions</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="build-a-model">
+<h2>Build a model<a class="headerlink" href="#build-a-model" title="Permalink to this heading"></a></h2>
+<p>A model is made up <strong>backbone</strong>, <strong>encoder</strong>, <strong>neck</strong>, <strong>head</strong>, and <strong>loss</strong>. We take the model apart and you can combine them to build a new model or replicate other network. You should configure the model parameters in the configs in advance and then you can invoking these moudles to build model.</p>
+<section id="take-an-example-to-show-the-process-of-building-a-model">
+<h3>Take an example to show the process of building a model.<a class="headerlink" href="#take-an-example-to-show-the-process-of-building-a-model" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fgvclib.metrics</span> <span class="kn">import</span> <span class="n">get_metric</span>
+<span class="kn">from</span> <span class="nn">fgvclib.models.sotas</span> <span class="kn">import</span> <span class="n">get_model</span>
+<span class="kn">from</span> <span class="nn">fgvclib.models.backbones</span> <span class="kn">import</span> <span class="n">get_backbone</span>
+<span class="kn">from</span> <span class="nn">fgvclib.models.encoders</span> <span class="kn">import</span> <span class="n">get_encoding</span>
+<span class="kn">from</span> <span class="nn">fgvclib.models.necks</span> <span class="kn">import</span> <span class="n">get_neck</span>
+<span class="kn">from</span> <span class="nn">fgvclib.models.heads</span> <span class="kn">import</span> <span class="n">get_head</span>
+
+<span class="k">def</span> <span class="nf">build_model</span><span class="p">(</span><span class="n">model_cfg</span><span class="p">:</span> <span class="n">CfgNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Build a FGVC model according to config.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model_cfg (CfgNode): The model config node of root config.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        nn.Module: The FGVC model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">backbone_builder</span> <span class="o">=</span> <span class="n">get_backbone</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+    <span class="n">backbone</span> <span class="o">=</span> <span class="n">backbone_builder</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">tltd</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">BACKBONE</span><span class="o">.</span><span class="n">ARGS</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">model_cfg</span><span class="o">.</span><span class="n">ENCODING</span><span class="o">.</span><span class="n">NAME</span><span class="p">:</span>
+        <span class="n">encoding_builder</span> <span class="o">=</span> <span class="n">get_encoding</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">ENCODING</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding_builder</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">tltd</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">ENCODING</span><span class="o">.</span><span class="n">ARGS</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">model_cfg</span><span class="o">.</span><span class="n">NECKS</span><span class="o">.</span><span class="n">NAME</span><span class="p">:</span>
+        <span class="n">neck_builder</span> <span class="o">=</span> <span class="n">get_neck</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">NECKS</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+        <span class="n">necks</span> <span class="o">=</span> <span class="n">neck_builder</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">tltd</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">NECKS</span><span class="o">.</span><span class="n">ARGS</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">necks</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">head_builder</span> <span class="o">=</span> <span class="n">get_head</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">HEADS</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+    <span class="n">heads</span> <span class="o">=</span> <span class="n">head_builder</span><span class="p">(</span><span class="n">class_num</span><span class="o">=</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">CLASS_NUM</span><span class="p">,</span> <span class="n">cfg</span><span class="o">=</span><span class="n">tltd</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">HEADS</span><span class="o">.</span><span class="n">ARGS</span><span class="p">))</span>
+
+    <span class="n">criterions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">model_cfg</span><span class="o">.</span><span class="n">CRITERIONS</span><span class="p">:</span>
+        <span class="n">criterions</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span> <span class="p">{</span><span class="s2">&quot;fn&quot;</span><span class="p">:</span> <span class="n">build_criterion</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;w&quot;</span><span class="p">]}})</span>
+    
+    <span class="n">model_builder</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">model_cfg</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model_builder</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="n">backbone</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">necks</span><span class="o">=</span><span class="n">necks</span><span class="p">,</span> <span class="n">heads</span><span class="o">=</span><span class="n">heads</span><span class="p">,</span> <span class="n">criterions</span><span class="o">=</span><span class="n">criterions</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial5_metrics.html" class="btn btn-neutral float-left" title="Tutorial 5: Learn about metrics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial7_transform.html" class="btn btn-neutral float-right" title="Tutorial 7: Learn about transforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, yyq.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
