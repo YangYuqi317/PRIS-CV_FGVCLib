@@ -31,7 +31,7 @@ html_static_path = ['_static']
 
 
 extensions = [
-    'sphinx_markdown_tables',
+    'sphinx-markdown-tables',
     'myst_parser'
 ]
 
