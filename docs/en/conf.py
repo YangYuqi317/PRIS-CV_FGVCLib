@@ -6,6 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import os
+import subprocess
+import sys
+
 project = 'FGVClib'
 copyright = '2022, yyq'
 author = 'yyq'
@@ -48,3 +52,14 @@ language='en'
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
+
+copybutton_prompt_text = r'>>> |\.\.\. '
+copybutton_prompt_is_regexp = True
+
+
+def builder_inited_handler(app):
+    subprocess.run(['./stat.py'])
+
+
+def setup(app):
+    app.connect('builder-inited', builder_inited_handler)

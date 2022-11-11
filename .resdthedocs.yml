@@ -22,3 +22,4 @@ python:
   version: 3.7
   install:
     - requirements: requirements/requirements_docs.txt
+    - requirements: requirements/readthedocs.txt
