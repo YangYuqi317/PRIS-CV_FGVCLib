@@ -2,5 +2,5 @@
 recommonmark
 Sphinx
 sphinx-autobuild
-sphinx-markdown-tables==0.0.17
+sphinx-markdown-tables==0.0.12
 sphinx-rtd-theme
