@@ -32,8 +32,14 @@ html_static_path = ['_static']
 
 extensions = [
     'sphinx_markdown_tables',
-    'recommonmark'
+    'myst_parser'
 ]
+
+source_parsers = {
+    '.md': 'recommonmark.parser.CommonMarkParser',
+}
+
+source_suffix = ['.rst', '.md']
 
 # multi-language docs
 language = 'en'
