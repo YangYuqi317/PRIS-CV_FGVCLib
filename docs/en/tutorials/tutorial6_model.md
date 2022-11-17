@@ -10,45 +10,19 @@ In this part, we took the model apart and encapsulated each part of the model. W
 
 ## Backbone
 We mainly provide two categories backbone, ResNet and VGG.
+  
+|              Backbone             |
+| ResNet          | VGG             |
+| resnet18        | vgg11           |
+| resnet34        | vgg13           |
+| resnet50        | vgg16           |
+| resnet101       | vgg19           |
+| resnet152       |
+| resnet50_32x4d  |
+| resnet101_32x8d |
+| resnet50_bc     |
+| resnet101_bc    |
 
-<div align="center">
-  <b>Backbone</b>
-</div>
-<table align="center">
-  <tbody>
-    <tr align="center" valign="bottom">
-      <td>
-        <b>ResNet</b>
-      </td>
-      <td>
-        <b>VGG</b>
-      </td>
-    </tr>
-    <tr valign="top">
-      <td>
-        <ul>
-          <li>resnet18</li>
-          <li>resnet34</li>
-          <li>resnet50</li>
-          <li>resnet101</li>
-          <li>resnet152</li>
-          <li>resnet50_32x4d</li>
-          <li>resnet101_32x8d</li>
-          <li>resnet50_bc</li>
-          <li>resnet101_bc</li>
-      </ul>
-      </td>
-      <td>
-        <ul>
-          <li>vgg11</li>
-          <li>vgg13</li>
-          <li>vgg16</li>
-          <li>vgg19</li>
-      </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 In the fgvclib/models/backbones/__init__.py", we define a function `get_backbone` to return the backbone with the givenname. The given names are `resnet18`, `resnet34`, `resnet50`, `resnet101`, `resnet152`, `resnext50_32x4d`, `resnext101_32x8d`, `resnet50_bc`, `resnet101_bc`, `vgg11`, `vgg13`, `vgg16`, `vgg19`
 
