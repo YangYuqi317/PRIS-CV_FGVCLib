@@ -11,7 +11,6 @@ In this part, we took the model apart and encapsulated each part of the model. W
 ## Backbone
 We mainly provide two categories backbone, ResNet and VGG.
   
-|              Backbone             |
 | ResNet          | VGG             |
 | resnet18        | vgg11           |
 | resnet34        | vgg13           |
