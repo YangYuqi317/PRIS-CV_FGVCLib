@@ -12,15 +12,16 @@ In this part, we took the model apart and encapsulated each part of the model. W
 We mainly provide two categories backbone, ResNet and VGG.
   
 | ResNet          | VGG             |
+| --------------- | --------------- |
 | resnet18        | vgg11           |
 | resnet34        | vgg13           |
 | resnet50        | vgg16           |
 | resnet101       | vgg19           |
-| resnet152       |                 |
-| resnet50_32x4d  |                 |
-| resnet101_32x8d |                 |
-| resnet50_bc     |                 |
-| resnet101_bc    |                 |
+| resnet152       | vgg             |
+| resnet50_32x4d  | vgg             |
+| resnet101_32x8d | vgg             |
+| resnet50_bc     | vgg             |
+| resnet101_bc    | vgg             |
 
 
 In the fgvclib/models/backbones/__init__.py", we define a function `get_backbone` to return the backbone with the givenname. The given names are `resnet18`, `resnet34`, `resnet50`, `resnet101`, `resnet152`, `resnext50_32x4d`, `resnext101_32x8d`, `resnet50_bc`, `resnet101_bc`, `vgg11`, `vgg13`, `vgg16`, `vgg19`
