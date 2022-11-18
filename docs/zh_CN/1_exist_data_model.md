@@ -8,5 +8,3 @@ The public datasets CUB_200_2011 is available from offical websites or mirrors. 
 
 If your folder structure is different, you may need to change the corresponding paths in config files `./configs`.
 
-
-
