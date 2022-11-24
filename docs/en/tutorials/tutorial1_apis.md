@@ -5,15 +5,15 @@ There are 4 types apis interfaces in this folder, ```build.py```, ```evluate_mod
 
 "fgvclib/apis/build.py" provides various apis for building a training or evaluation system fast.
 
-"fgvc/apis/build.py" provides various apis for building a training or evaluation system fast.
+"fgvclib/apis/evaluate_model.py" provides a api for evaluating FGVC algorithms.
 
 "fgvclib/apis/save_model.py"provides various apis for saving a model.
 
-"fgvclib/apis/update_model"provides various apis for updating models and record losses.
+"fgvclib/apis/update_model"provides various apis for updating models and recording losses.
 
 
 ## Build
-
+We import the other modules to build the model, in this part, there are eight functions. The configs about the model are saved in the folder "./configs". For more detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html)
 **build_model**: Build a FGVC model according to config.
 - Args:
 
