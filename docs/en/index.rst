@@ -3,7 +3,6 @@ Welcome to FGVCLib's documentation!
 
 
 .. toctree::
-
    :maxdepth: 2
    :caption: Get Started
    
@@ -11,7 +10,6 @@ Welcome to FGVCLib's documentation!
    model_zoo.md
 
 .. toctree::
-
    :maxdepth: 2
    :caption: Quick Run
 
@@ -20,7 +18,6 @@ Welcome to FGVCLib's documentation!
 
 
 .. toctree::
-
    :maxdepth: 2
    :caption: Tutorials
 
@@ -28,7 +25,6 @@ Welcome to FGVCLib's documentation!
 
 
 .. toctree::
-
    :maxdepth: 2
    :caption: Tutorials
 
@@ -36,7 +32,6 @@ Welcome to FGVCLib's documentation!
 
 
 .. toctree::
-
    :maxdepth: 2
    :caption: Switch Language
 
