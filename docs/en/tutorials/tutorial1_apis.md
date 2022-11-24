@@ -13,7 +13,8 @@ There are 4 types apis interfaces in this folder, ```build.py```, ```evluate_mod
 
 
 ## Build
-We import the other modules to build the model, in this part, there are eight functions. The configs about the model are saved in the folder "./configs". For more detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html)
+We import the other modules to build the model, in this part, there are eight functions. The configs about the model are saved in the folder "./configs". For more detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html)
+
 **build_model**: Build a FGVC model according to config.
 - Args:
 
@@ -27,6 +28,7 @@ We import the other modules to build the model, in this part, there are eight fu
 - Args:
 
     `cfg (CfgNode)`: The root config node.
+
 - Returns:
 
     `Logger`: The Logger object.
@@ -35,6 +37,7 @@ We import the other modules to build the model, in this part, there are eight fu
 - Args:
 
     `transforms_cfg (CfgNode)`: The root config node.
+
 - Returns:
 
     `transforms.Compose`: The transforms.Compose object in Pytorch.
@@ -42,8 +45,12 @@ We import the other modules to build the model, in this part, there are eight fu
 **build_dataset**: Build a dataloader for training or evaluation.
 - Args: 
 
+    `name(str)`: The dataset name.
     `root (str)`: The directory of dataset.
-    `cfg (CfgNode)`: The root config node.
+    `cfg (CfgNode)`: The mode config of the dataset config.
+    `mode(str)`: The split of the dataset.
+    `transform`: Pytorch Transformer Compose.
+
 - Returns:
 
     `DataLoader`: A Pytorch Dataloader.
@@ -52,6 +59,7 @@ We import the other modules to build the model, in this part, there are eight fu
 - Args:
 
     `optim_cfg (CfgNode)`: The optimizer config node of root config node.
+
 - Returns:
 
     `Optimizer`: A Pytorch Optimizer.
@@ -60,6 +68,7 @@ We import the other modules to build the model, in this part, there are eight fu
 - Args:
 
    `criterion_cfg` (CfgNode): The criterion config node of root config node.
+
 - Returns:
 
     `nn.Module`: A loss function.
@@ -68,6 +77,7 @@ We import the other modules to build the model, in this part, there are eight fu
 - Args:
 
     `cfg (CfgNode)`: The root config node.
+
 - Returns:
 
     `Interpreter`: A Interpreter.
@@ -76,6 +86,7 @@ We import the other modules to build the model, in this part, there are eight fu
 - Args:
 
     `metrics_cfg (CfgNode)`: The metric config node of root config node.
+    
 - Returns:
 
     `t.List[NamedMetric]`: A List of NamedMetric.
