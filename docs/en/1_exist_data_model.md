@@ -1,4 +1,4 @@
-## 1: Train with the existing models and satndard datastes
+# 1: Train with the existing models and satndard datastes
 
 To evaluate a model’s accuracy, one usually tests the model on some standard datasets. FGVCLib supports the public datasets including CUB_200_2011. This section will show how to test existing models on supported datasets.
 

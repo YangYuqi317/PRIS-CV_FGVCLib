@@ -13,6 +13,7 @@ Welcome to FGVCLib's documentation!
    :maxdepth: 2
    :caption: Quick Run
 
+   global_configs.md
    1_exist_data_model.md
    2_exist_data_new_model.md
 
