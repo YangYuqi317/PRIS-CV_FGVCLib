@@ -2,9 +2,9 @@
 
 ## Common settings
 
-- All models were trained on `CUB_200_2011_train` and tested on the `CUB_200_2011_test`.
-- For fair comparison with other codebases, we report the GPU memory as the maximum value of `torch.cuda.max_memory_allocated()` for all 8 GPUs. Note that this value is usually less than what `nvidia-smi` shows.
-- All pytorch-style pretrained backbone are form PyTorch model zoo.
+- 所有的模型我们都是在`CUB_200_2011_train`上进行训练并且在`CUB_200_2011_test`上进行测试的
+- 为了与其他代码库进行公平的比较，我们将GPU内存报告为所有8个GPU的' torch.cuda.max_memory_allocate() '的最大值。注意，这个值通常小于' nvidia-smi '显示的值。
+- 所有的预训练的backbone都是来自于PyTorch model zoo。
 
 ## Backbone models
 
