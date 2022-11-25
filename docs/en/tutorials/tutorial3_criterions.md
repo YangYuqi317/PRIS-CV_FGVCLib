@@ -4,6 +4,8 @@ In this folder "fgvclib/criterions" we provide different loss functions for the 
 
 We provide four loss functions, `cross_entropy_loss`, `binary_cross_entropy_loss`, `mean_square_error_loss` and `mutual_channel_loss`
 
+You can choose which loss function you want to use, and you should set it in the "./configs". For more details about the configs please see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html)
+
 | Loss functions         | Name                       |
 | ---------------------- | -------------------------- |
 | cross entropy loss     | cross_entropy_loss         |
@@ -84,7 +86,7 @@ In the "fgvclib/criterions/utils.py", we design a class named `LossItem`, and tw
   
   Dict: A loss information dict whose key is loss name, value is loss value.
 
-## The use of the criterions
+## The example of using the criterions
 
 ### Build loss functions for training.
 In the "fgvclib/apis/build.py", use the "fgvclib.criterions" to build loss functions for training. You can choose the loss function name `criterion_cfg['name']` from  `cross_entropy_loss`, `cross_entropy_loss`, `mean_square_error_loss` and `mutual_channel_loss`.

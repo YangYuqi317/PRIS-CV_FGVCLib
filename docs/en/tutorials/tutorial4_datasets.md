@@ -26,6 +26,8 @@ Then, we set a class `FGVCDataset` as the input of class `CUB_200_2011` which is
 
 CUB_200_2011 is the Caltech-UCSD Birds-200-2011 dataset.
 We list the relevant link, file, and dir about CUB_200_2011.
+
+If you don't have the dataset, please set the `download` **true**.
 ```python
     name: str = "Caltech-UCSD Birds-200-2011"
     link: str = "http://www.vision.caltech.edu/datasets/cub_200_2011/"
@@ -37,4 +39,11 @@ We list the relevant link, file, and dir about CUB_200_2011.
     images_list_file: str = "CUB_200_2011/CUB_200_2011/images.txt" 
 ```
 
+- Args:
+  
+  root (str): The root directory of CUB dataset.
+  mode (str): The split of CUB dataset.
+  download (bool): Directly downloading CUB dataset by setting download=True. Default is False.
+  transforms (torchvision.transforms.Compose): The PyTorch transforms Compose class used to preprocessing the data.
+  positive (int): If positive = n > 0, the __getitem__ method will an extra list of n images of same category.
 

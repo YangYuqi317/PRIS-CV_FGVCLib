@@ -10,19 +10,6 @@ In this part, we took the model apart and encapsulated each part of the model. W
 
 ## Backbone
 We mainly provide two categories backbone, ResNet and VGG.
-  
-| ResNet          | VGG             |
-| --------------- | --------------- |
-| resnet18        | vgg11           |
-| resnet34        | vgg13           |
-| resnet50        | vgg16           |
-| resnet101       | vgg19           |
-| resnet152       |                 |
-| resnet50_32x4d  |                 |
-| resnet101_32x8d |                 |
-| resnet50_bc     |                 |
-| resnet101_bc    |                 |
-
 
 In the fgvclib/models/backbones/__init__.py", we define a function `get_backbone` to return the backbone with the givenname. The given names are `resnet18`, `resnet34`, `resnet50`, `resnet101`, `resnet152`, `resnext50_32x4d`, `resnext101_32x8d`, `resnet50_bc`, `resnet101_bc`, `vgg11`, `vgg13`, `vgg16`, `vgg19`
 
@@ -92,9 +79,10 @@ Other backbones are similar to the vgg11, the difference lies on the **return**.
 
 ### The example
 When you need to build a FGVC model, you can use it to get a backbone.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the backbone name.
+
 ```python
 from fgvclib.models.backbones import get_backbone
 
@@ -134,9 +122,10 @@ def max_pooling_2d(cfg):
 ```
 ### The example 
 When you need to build a FGVC model, you can use it to get a encoding.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the encoding name.
+
 ```python
 from fgvclib.models.encoders import get_encoding
 
@@ -167,7 +156,7 @@ Then, we define a function named `multi_scale_conv`.
 
 ### The example
 When you need to build a FGVC model, you can use it to get a neck.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the neck name.
 ```python
@@ -204,7 +193,7 @@ Then, we define a function named `classifier_2fc`.
 
 ### The example
 When you need to build a FGVC model, you can use it to get a head.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the head name.
 ```python
@@ -233,7 +222,7 @@ def get_model(model_name):
 
 ### The example
 When you need to build a FGVC model, you can use it to get a model.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the model name.
 

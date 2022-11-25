@@ -2,11 +2,11 @@
 
 We provide 3 metrics, `accuracy`, `precision`, `recall` as the results of training and testing. They are from the Torchmetrics, and in "__init__" we set the list of them `__all__ = ["accuracy", "precision", "recall"]`
 
-For detailes about the meanings of the **accuracy** parameters, see [torchmetrics.Accuracy object](https://torchmetrics.readthedocs.io/en/stable/classification/accuracy.html).
+For details about the meanings of the **accuracy** parameters, see [torchmetrics.Accuracy object](https://torchmetrics.readthedocs.io/en/stable/classification/accuracy.html).
 
-For detailes about the meanings of the **precision** parameters, see [torchmetrics.Precision object](https://torchmetrics.readthedocs.io/en/stable/classification/precision.html).
+For details about the meanings of the **precision** parameters, see [torchmetrics.Precision object](https://torchmetrics.readthedocs.io/en/stable/classification/precision.html).
 
-For detailes about the meanings of the **recall** parameters, see [torchmetrics.Recall object](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+For details about the meanings of the **recall** parameters, see [torchmetrics.Recall object](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
 
 
 ## Accuracy
