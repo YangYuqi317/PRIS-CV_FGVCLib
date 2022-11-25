@@ -30,7 +30,7 @@ Welcome to FGVCLib's documentation!
 .. toctree::
 
    :maxdepth: 2
-   :caption: Tutorials
+   :caption: Utils
 
    useful_tools.md
 
