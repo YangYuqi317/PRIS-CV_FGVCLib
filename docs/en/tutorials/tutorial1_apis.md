@@ -93,71 +93,24 @@ We import the other modules to build the model, in this part, there are eight fu
 
 ## Evaluate Model
 
-**build_model**: Build a FGVC model according to config.
+We import the other modules to evaluate the model, in this part, there is one function. The configs about the model are saved in the folder "./configs". For more detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html)
+
+**evaluate_model**: Evaluate the FGVC model according to config.
 - Args:
 
-    `model_cfg (CfgNode)`: The model config node of root config.
+    `model(nn.Module)`: The FGVC model.
+    `p_bar(iterable)`: A iterable provide test data.
+    `metrics(List[NamedMetric])`: List of metrics.
+    `use_cuda(boolean, optional)`: Whether to use gpu.
+
 - Returns:
 
-    `nn.Module`: The FGVC model.
+    `dict`: The result dict.
 
-**build_logger**: Build a Logger object according to config.
-- Args:
-
-    `cfg (CfgNode)`: The root config node.
-- Returns:
-
-    `Logger`: The Logger object.
-
-**build_transforms**: Build transforms for train or test dataset according to config.
-- Args:
-
-    `transforms_cfg (CfgNode)`: The root config node.
-- Returns:
-
-    `transforms.Compose`: The transforms.Compose object in Pytorch.
-
-**build_dataset**: Build a dataloader for training or evaluation.
-- Args:
-
-    `root (str)`: The directory of dataset.
-    `cfg (CfgNode)`: The root config node.
-- Returns:
-    `DataLoader`: A Pytorch Dataloader.
-
-**build_optimizer**: Build a optimizer for training.
-- Args:
-
-    `optim_cfg (CfgNode)`: The optimizer config node of root config node.
-- Returns:
-
-    `Optimizer`: A Pytorch Optimizer.
-
-**build_criterion**: Build loss function for training.
-- Args:
-
-    `criterion_cfg (CfgNode)`: The criterion config node of root config node.
-- Returns:
-
-    `nn.Module`: A loss function.
-
-**build_interpreter**: Build loss function for training.
-- Args:
-
-    `cfg (CfgNode)`: The root config node.
-- Returns:
-
-    `Interpreter`: A Interpreter.
-
-**build_metrics**: Build metrics for evaluation.
-- Args:
-
-    `metrics_cfg (CfgNode)`: The metric config node of root config node.
-- Returns:
-
-    `t.List[NamedMetric]`: A List of NamedMetric.
 
 ## Save Model
+
+We design this module to save the trained FGVC model.
 
 **save_model**: Save the trained FGVC model.
 - Args:
@@ -167,6 +120,8 @@ We import the other modules to build the model, in this part, there are eight fu
     `logger (Logger)`: The Logger object.
 
 ## Update Model
+
+We design this module tp update the FGVC model and record losses.
 
 **update_model**: Update the FGVC model and record losses.
 - Args:
@@ -178,7 +133,7 @@ We import the other modules to build the model, in this part, there are eight fu
     `use_cuda (boolean)`: Whether to use GPU to train the model.
     `logger (Logger)`: The Logger object.
 
-## The use of the apis
+## The example of using the apis
 When you do algorithm design, you need to import the apis ```from fgvclib.apis import * ```and call the interfaces. You can use the following functions directly, ```build_logger```,  ```build_criterion```, ```build_model```, ```build_metrics```, ```build_transforms```, ```build_dataset```, ```build_optimizer```, ```update_model```, ```evaluate_model```, ```save_model```, ```build_interpreter```
 
 - The example of building model
