@@ -1,15 +1,15 @@
 # Tutorial 2: Learn about configs
 
-In this folder "fgvclib/configs" we show the configs about the fgvclib.
-We modularized the config in the experiment, creating ```FGVCConfig``` class to load and store the parameters.And you can load config by using ```FGVCConfig```
+在这个文件夹中 "fgvclib/configs" 我们列出了关于FGVCLib的相关配置。
+在实验中我们对配置进行了模块化, 建立了 ```FGVCConfig``` 类去加载喝存储相关的参数。你可以使用 ```FGVCConfig```加载相关的配置。
 
 ## Config File Structure
 
-There are 4 basic component types under "fgvclib/configs/config.py",```__init__```,```get_cfg```,```load```,```stringfy```.
+在这个文件夹下"fgvclib/configs/config.py"有四种基本组件，```__init__```,```get_cfg```,```load```,```stringfy```.
 
-We set the parameters for the fgvclib, and you can search or modify the parameters in ```config.py```.
+我们为FGVC方法设置了参数，你可以在```config.py```查找参数或修改参数设置。
 
-The following is about the basic parameters.
+以下是关于基础的参数说明：
 ```python
   # Name of Project
   self.cfg.PROJ_NAME = "FGVC"
@@ -35,7 +35,7 @@ The following is about the basic parameters.
   self.cfg.LOGGER.PRINT_FRE = 50
 ```
 
-The following parameters are about datasets.
+以下是关于数据集的参数说明：
 ```python
   # Datasets and data loader
   self.cfg.DATASET = CN()
@@ -59,7 +59,7 @@ The following parameters are about datasets.
   self.cfg.DATASET.TEST.NUM_WORKERS = 0
 ```
 
-The following parameters are about the model.
+以下是关于模型的参数说明：
 ```python
   # Model architecture
   self.cfg.MODEL = CN()
@@ -106,7 +106,7 @@ The following parameters are about the model.
   self.cfg.OPTIMIZER.LR.heads = None
 ```
 
-The following parameters are about the processing.
+以下是关于训练过程的参数说明：
 ```python
   # Train
   self.cfg.ITERATION_NUM = None
@@ -131,7 +131,7 @@ The following parameters are about the processing.
 ```
 ## The example of the configs
 
-In the ```main.py```, you can import the configs ```from fgvclib.configs import FGVCConfig```, and use it to load config.
+在这个程序中 ```main.py```, 你可以导入关于配置的文件 ```from fgvclib.configs import FGVCConfig```, 并且使用它加载模型配置。
 
 ```python
 import os
