@@ -1,6 +1,6 @@
 # Tutorial 7: Learn about transforms
 
-We import the `transforms` to process the image. We add six categories transform method, `resize`, `random crop`,`center crop`, `random horizontal flip`, `to tensor`. `normaliza`.
+We import the `transforms` to process the image. The transfomers are from the torchvision. We add six categories transform method, `resize`, `random crop`,`center crop`, `random horizontal flip`, `to tensor`. `normaliza`.
 
 - **Resize**: Resize the input image to the given size. If the image is torch Tensor, it is expected to have […, H, W] shape, where … means an arbitrary number of leading dimensions.
 - **Random crop**: Crop the given image at a random location. If the image is torch Tensor, it is expected to have […, H, W] shape, where … means an arbitrary number of leading dimensions, but if non-constant padding is used, the input is expected to have at most 2 leading dimensions
