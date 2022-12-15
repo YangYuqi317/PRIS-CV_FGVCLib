@@ -6,12 +6,12 @@ We provide four loss functions, `cross_entropy_loss`, `binary_cross_entropy_loss
 
 You can choose which loss function you want to use, and you should set it in the "./configs". For more details about the configs please see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html)
 
-| Loss functions         | Name                       |
-| ---------------------- | -------------------------- |
-| cross entropy loss     | cross_entropy_loss         |
-| binary entropy loss    | binary_cross_entropy_loss  |
-| mean square error loss | mean_square_error_loss     |
-| mutual channel loss    | mutual_channel_loss        |
+| Loss functions               | Name                       |
+| ---------------------------- | -------------------------- |
+| cross entropy loss           | cross_entropy_loss         |
+| binary cross entropy loss    | binary_cross_entropy_loss  |
+| mean square error loss       | mean_square_error_loss     |
+| mutual channel loss          | mutual_channel_loss        |
 
 ## Base loss function
 

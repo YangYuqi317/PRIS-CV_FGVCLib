@@ -1,176 +1,120 @@
 # Tutorial 1: Learn about apis
 
-In this folder "fgvclib/api" we set up the various apis interfaces for the fgvclib.
-There are 4 types apis interfaces in this folder, ```build.py```, ```evluate_model.py```, ```save_model.py```, and ```update_model.py```
+在"fgvclib/api"这个文件夹下，我们为fgvclib设置了各类api接口。这里有四种类型的api接口：```build.py```, ```evluate_model.py```, ```save_model.py```, 和 ```update_model.py```。
 
-"fgvclib/apis/build.py" provides various apis for building a training or evaluation system fast.
+"fgvclib/apis/build.py"：提供了各种用于快速构建训练系统或评估系统的api；
 
-"fgvc/apis/build.py" provides various apis for building a training or evaluation system fast.
+"fgvc/apis/evluate_model.py"：提供了用于评估FGVC算法的api；
 
-"fgvclib/apis/save_model.py"provides various apis for saving a model.
+"fgvclib/apis/save_model.py"：提供了各种用于保存模型的api；
 
-"fgvclib/apis/update_model"provides various apis for updating models and record losses.
-
+"fgvclib/apis/update_model"：提供了各种用于更新模型和记录损失的api。
 
 ## Build
 
-**build_model**: Build a FGVC model according to config.
-- Args:
+**build_model**: 根据全局配置构建一个FGVC模型。
+- 参数:
 
-    `model_cfg (CfgNode)`: The model config node of root config.
+    `model_cfg (CfgNode)`: 根配置的模型配置节点
+- 返回值:
 
-- Returns:
+    `nn.Module`: FGVC模型
 
-    `nn.Module`: The FGVC model.
+**build_logger**: 根据配置构建日志对象。
+- 参数:
 
-**build_logger**: Build a Logger object according to config.
-- Args:
+    `cfg (CfgNode)`: 根配置节点
+- 返回值:
 
-    `cfg (CfgNode)`: The root config node.
-- Returns:
+    `Logger`: 日志对象
+**build_transforms**: 根据配置为训练或测试数据集构建转换
+- 参数:
 
-    `Logger`: The Logger object.
+    `transforms_cfg (CfgNode)`: 根配置节点
+- 返回值:
 
-**build_transforms**: Build transforms for train or test dataset according to config.
-- Args:
+    `transforms.Compose`: Pytorch中的transforms.Compose对象
 
-    `transforms_cfg (CfgNode)`: The root config node.
-- Returns:
+**build_dataset**: 为训练过程或评估过程构建数据加载器
+- 参数: 
 
-    `transforms.Compose`: The transforms.Compose object in Pytorch.
+    `root (str)`: 数据集的目录
+    `cfg (CfgNode)`: 根配置节点
+- 返回值:
 
-**build_dataset**: Build a dataloader for training or evaluation.
-- Args: 
+    `DataLoader`: Pytorch数据加载器
 
-    `root (str)`: The directory of dataset.
-    `cfg (CfgNode)`: The root config node.
-- Returns:
+**build_optimizer**: 为训练过程构建优化器
+- 参数:
 
-    `DataLoader`: A Pytorch Dataloader.
+    `optim_cfg (CfgNode)`: 根配置节点的优化配置节点
+- 返回值:
 
-**build_optimizer**: Build a optimizer for training.
-- Args:
+    `Optimizer`: Pytorch优化器
 
-    `optim_cfg (CfgNode)`: The optimizer config node of root config node.
-- Returns:
+**build_criterion** : 为训练过程构建损失函数
+- 参数:
 
-    `Optimizer`: A Pytorch Optimizer.
+   `criterion_cfg` (CfgNode): 根配置节点的标准配置节点
+- 返回值:
 
-**build_criterion** :Build loss function for training.
-- Args:
+    `nn.Module`: 损失函数
 
-   `criterion_cfg` (CfgNode): The criterion config node of root config node.
-- Returns:
+**build_interpreter**: 为训练过程构建一个解释器
+- 参数:
 
-    `nn.Module`: A loss function.
+    `cfg (CfgNode)`: 根配置节点
+- 返回值:
 
-**build_interpreter**: Build loss function for training.
-- Args:
+    `Interpreter`: 一个解释器
 
-    `cfg (CfgNode)`: The root config node.
-- Returns:
+**build_metrics**: 为评估过程构建度量标准
+- 参数:
 
-    `Interpreter`: A Interpreter.
+    `metrics_cfg (CfgNode)`: 根配置节点的度量标准配置节点
+- 返回值:
 
-**build_metrics**: Build metrics for evaluation.
-- Args:
-
-    `metrics_cfg (CfgNode)`: The metric config node of root config node.
-- Returns:
-
-    `t.List[NamedMetric]`: A List of NamedMetric.
+    `t.List[NamedMetric]`: NamedMetric列表
 
 ## Evaluate Model
 
-**build_model**: Build a FGVC model according to config.
-- Args:
+**evaluate_model**:对FGVC模型进行评估
+- 参数：
 
-    `model_cfg (CfgNode)`: The model config node of root config.
-- Returns:
+    `model (nn.Module)`: FGVC模型
+    `p_bar (iterable)`: 提供测试数据的迭代器
+    `metrics (List[NamedMetric])`: 指标的列表
+    `use_cuda (boolean, optional)`: 是否使用gpu
 
-    `nn.Module`: The FGVC model.
+- 返回值：
 
-**build_logger**: Build a Logger object according to config.
-- Args:
-
-    `cfg (CfgNode)`: The root config node.
-- Returns:
-
-    `Logger`: The Logger object.
-
-**build_transforms**: Build transforms for train or test dataset according to config.
-- Args:
-
-    `transforms_cfg (CfgNode)`: The root config node.
-- Returns:
-
-    `transforms.Compose`: The transforms.Compose object in Pytorch.
-
-**build_dataset**: Build a dataloader for training or evaluation.
-- Args:
-
-    `root (str)`: The directory of dataset.
-    `cfg (CfgNode)`: The root config node.
-- Returns:
-    `DataLoader`: A Pytorch Dataloader.
-
-**build_optimizer**: Build a optimizer for training.
-- Args:
-
-    `optim_cfg (CfgNode)`: The optimizer config node of root config node.
-- Returns:
-
-    `Optimizer`: A Pytorch Optimizer.
-
-**build_criterion**: Build loss function for training.
-- Args:
-
-    `criterion_cfg (CfgNode)`: The criterion config node of root config node.
-- Returns:
-
-    `nn.Module`: A loss function.
-
-**build_interpreter**: Build loss function for training.
-- Args:
-
-    `cfg (CfgNode)`: The root config node.
-- Returns:
-
-    `Interpreter`: A Interpreter.
-
-**build_metrics**: Build metrics for evaluation.
-- Args:
-
-    `metrics_cfg (CfgNode)`: The metric config node of root config node.
-- Returns:
-
-    `t.List[NamedMetric]`: A List of NamedMetric.
+    `dict`: 结果的字典
 
 ## Save Model
 
-**save_model**: Save the trained FGVC model.
-- Args:
+**save_model**: 保存被训练的FGVC模型
+- 参数:
 
-    `cfg (CfgNode)`: The root config node.
-    `model (nn.Module)`: The FGVC model.
-    `logger (Logger)`: The Logger object.
+    `cfg (CfgNode)`: 根配置节点
+    `model (nn.Module)`: FGVC模型
+    `logger (Logger)`: 日志对象
 
 ## Update Model
 
-**update_model**: Update the FGVC model and record losses.
-- Args:
+**update_model**: 更新FGVC模型并且记录损失
+- 参数:
 
-    `model (nn.Module)`: The FGVC model.
-    `optimizer (Optimizer)`: The Logger object.
-    `pbar (Iterable)`: A iterable object provide training data.
-    `strategy (string)`: The update strategy.
-    `use_cuda (boolean)`: Whether to use GPU to train the model.
-    `logger (Logger)`: The Logger object.
+    `model (nn.Module)`: FGVC模型
+    `optimizer (Optimizer)`: 日志对象
+    `pbar (Iterable)`: 提供训练数据的可迭代对象
+    `strategy (string)`: 更新的策略
+    `use_cuda (boolean)`: 是否使用GPU训练模型
+    `logger (Logger)`: 日志对象
 
-## The use of the apis
-When you do algorithm design, you need to import the apis ```from fgvclib.apis import * ```and call the interfaces. You can use the following functions directly, ```build_logger```,  ```build_criterion```, ```build_model```, ```build_metrics```, ```build_transforms```, ```build_dataset```, ```build_optimizer```, ```update_model```, ```evaluate_model```, ```save_model```, ```build_interpreter```
+## API的应用
+当你进行算法设计时，你需要使用```from fgvclib.apis import * ```导入上述这些api去调用这些接口。你可以直接使用以下的函数：```build_logger```,  ```build_criterion```, ```build_model```, ```build_metrics```, ```build_transforms```, ```build_dataset```, ```build_optimizer```, ```update_model```, ```evaluate_model```, ```save_model```, ```build_interpreter```
 
-- The example of building model
+- 应用举例：建立模型
 ```python
 import os
 import torch

@@ -1,93 +1,97 @@
 # Tutorial 3: Learn about criterions
 
-In this folder "fgvclib/criterions" we provide different loss functions for the fgvclib.
+在"fgvclib/criterions"这个文件夹下，我们为fgvclib提供了不同了损失函数。
 
-We provide four loss functions, `cross_entropy_loss`, `binary_cross_entropy_loss`, `mean_square_error_loss` and `mutual_channel_loss`
+我们提供了四个损失函数：`cross_entropy_loss`, `binary_cross_entropy_loss`, `mean_square_error_loss` 和 `mutual_channel_loss`
 
 | Loss functions         | Name                       |
 | ---------------------- | -------------------------- |
-| cross entropy loss     | cross_entropy_loss         |
-| binary entropy loss    | binary_cross_entropy_loss  |
-| mean square error loss | mean_square_error_loss     |
-| mutual channel loss    | mutual_channel_loss        |
+| 交叉熵损失              | cross_entropy_loss         |
+| 二元交叉熵损失            | binary_cross_entropy_loss  |
+| 均方差损失              | mean_square_error_loss     |
+| 互信道损失              | mutual_channel_loss        |
 
-## Base loss function
+## 基础的损失函数
 
-`cross_entropy_loss`, `binary_cross_entropy_loss`, `mean_square_error_loss` are the base loss functions, and they are from PyTorch.
-"fgvclib/criterions/base_loss.py": provides the base loss functions.
+`cross_entropy_loss`, `binary_cross_entropy_loss`, `mean_square_error_loss` 这三类损失函数是基础的损失函数，在fgvclib中，我们从Pytorch中调用它们。
 
-**cross_entropy_loss**: Build the cross entropy loss function.
-- Args:
+"fgvclib/criterions/base_loss.py"中提供了这三类基础的损失函数。
 
-  ```cfg (CfgNode)```: The root node of config.
+**cross_entropy_loss**: 构建交叉熵损失函数
+- 参数:
 
-- Return:
+  ```cfg (CfgNode)```: 配置的根节点
 
-  ```nn.Module```: The loss function.
+- 返回值:
 
-**binary_cross_entropy_loss**:Build the binary cross entropy loss function.
-- Args:
+  ```nn.Module```: 损失函数
 
-  ```cfg (CfgNode)```: The root node of config.
+**binary_cross_entropy_loss**: 构建二元交叉熵损失函数
+- 参数:
 
-- Return:
+  ```cfg (CfgNode)```: 配置的根节点
 
-  ```nn.Module```: The loss function.
+- 返回值:
 
-**mean_square_error_loss**: Build the mean square error loss function.
-- Args:
+  ```nn.Module```: 损失函数
 
-  ```cfg (CfgNode)```: The root node of config.
+**mean_square_error_loss**: 构建均方差损失函数
+- 参数:
 
-- Return:
+  ```cfg (CfgNode)```: 配置的根节点
 
-  ```nn.Module```: The loss function.
+- 返回值:
 
-## Mutual channel loss
+  ```nn.Module```: 损失函数
 
-"fgvclib/criterions/mutual_channel_loss.py": provides the mutual channel loss function which was proposed on "The Devil is in the Channels: Mutual-Channel Loss for Fine-Grained Image Classification".
+## 互信道损失函数
 
-```class MutualChannelLoss```: The mutual channel loss function.
+"fgvclib/criterions/mutual_channel_loss.py" 提供了互信道损失函数，该方法在"The Devil is in the Channels: Mutual-Channel Loss for Fine-Grained Image Classification"论文中被提出，关于互信道损失函数的更多细节，参考该篇论文[MC-Loss](https://arxiv.org/abs/2002.04264)
 
-- Args:
+```class MutualChannelLoss```: 互信道损失函数类
+- 参数:
 
-  ```height (int)```: The kernel size of average pooling.
-  ```cnum (int)```: Channel numbers per class.
-  ```div_weight (float)```: The weight for diversity part loss.
-  ```dis_weight (float)```: The weight for discriminality part loss.
+  ```height (int)```: average pooling 的内核大小
+  ```cnum (int)```: 每个类的通道数量
+  ```div_weight (float)```: 多样性部分损失的权重
+  ```dis_weight (float)```: 判别性部分损失的权重
 
-## Utils
-In the "fgvclib/criterions/utils.py", we design a class named `LossItem`, and two functions, `compute_loss_value` and `detach_loss_value`.
+## 工具
 
-**LossItem**: A dataclass object for store training loss
-- Args:
 
-  name (string): The loss item name.
-  value (torch.Tensor): The value of loss.
-  weight (float, optional): The weight of current loss item, default is 1.0.
+在"fgvclib/criterions/utils.py"中，我们设计了一个类：`LossItem`，两个函数：`compute_loss_value` 和 `detach_loss_value`
 
-**compute_loss_value**: A dataclass object for store training loss
-- Args:
+**LossItem**: 用于储存训练损失的数据类对象
+- 参数:
 
-  items (List[LossItem]): The loss items.
+  `name (string)`: 损失函数名称
+  `value (torch.Tensor)`: 损失项的值
+  `weight (float, optional)`: 当前损失项的权重，默认为1.0
 
-- Return:
+**compute_loss_value**: 用于储存训练损失的数据类对象
+- 参数:
+
+  `items (List[LossItem])`: 损失项
+
+- 返回值:
   
-  Tensor: The total loss value.
+  `Tensor`: 总的损失项的值
 
-**detach_loss_value**: Detach loss value from GPU.
-- Args:
+**detach_loss_value**: 从GPU分离损失值
+- 参数:
 
-  items (List[LossItem]): The loss items.
+  `items (List[LossItem])`: 损失项
 
-- Return:
+- 返回值:
   
-  Dict: A loss information dict whose key is loss name, value is loss value.
+  `Dict`: 损失信息字典，key为损失名称，对应的值为损失值
 
-## The use of the criterions
+## Criterion标准的应用
 
-### Build loss functions for training.
-In the "fgvclib/apis/build.py", use the "fgvclib.criterions" to build loss functions for training. You can choose the loss function name `criterion_cfg['name']` from  `cross_entropy_loss`, `cross_entropy_loss`, `mean_square_error_loss` and `mutual_channel_loss`.
+### 为训练过程建立损失函数
+
+在"fgvclib/apis/build.py"中，使用"fgvclib.criterions"去为训练过程构建损失函数，你可以从这四类损失函数中选择`cross_entropy_loss`, `cross_entropy_loss`, `mean_square_error_loss` and `mutual_channel_loss`替换损失函数名称`criterion_cfg['name']`
+
 ```python
 from fgvclib.criterions import get_criterion
 
@@ -97,8 +101,10 @@ def build_criterion(criterion_cfg: CfgNode) -> nn.Module:
     return criterion
 ```
 
-### Calculate loss functions.
-Following is about how to calculate the loss, and you can replace the loss functions.
+### 计算损失函数
+
+以下展示了如何计算损失，你可以替换其中的损失函数类型。
+
 ```python
 from fgvclib.criterions.utils import LossItem
 
@@ -106,8 +112,9 @@ losses = list()
 losses.append(LossItem(name='cross_entropy_loss', value=self.criterions['cross_entropy_loss']['fn'](x, targets)))
 ```
 
-### Define the forward.
-Set the ResNet50 for example.
+### 定义前向传播
+以ResNet50结构为例：
+
 ```python
 from fgvclib.criterions.utils import LossItem
 

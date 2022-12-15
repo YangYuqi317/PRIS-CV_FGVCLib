@@ -1,6 +1,7 @@
 # Tutorial 4: Learn about datasets
-In FGVCLib, we mainly use the Birds dataset, `CUB_200_2011`.
-We build this folder to load the dataset, and we define the function `get_dataset` to return the dataset with the given name. The given names are `Dataset_AnnoFolder`, `Dataset_AnnoFile`, `CUB_200_2011`. 
+
+在fgvclib中，我们主要使用鸟类的数据集：`CUB_200_2011`
+我们建立这个文件夹去加载数据集，我们定义了`get_dataset`函数，通过给定的数据集名称，返回对应的数据集。
 
 ```python
 def get_dataset(dataset_name) -> FGVCDataset:
@@ -19,13 +20,15 @@ def get_dataset(dataset_name) -> FGVCDataset:
     return globals()[dataset_name]
 ```
 
-## FGVC Dataset
-Firstly, we should know what dataset we have. We define the function `available_datasets` to show all available FGVC datasets, and this function will return a list wih all available FGVC datasets.
+## FGVC数据集
 
-Then, we set a class `FGVCDataset` as the input of class `CUB_200_2011` which is used for loading the CUB_200_2011 dataset.
+首先，我们应该知道我们具有什么数据集。我们定义了函数`available_datasets`来展示所有的可用的FGVC数据集，这个函数将会返回所有可用的FGVC数据集列表。
 
-CUB_200_2011 is the Caltech-UCSD Birds-200-2011 dataset.
-We list the relevant link, file, and dir about CUB_200_2011.
+然后，我们建立了一个类`FGVCDataset`作为`CUB_200_2011`类的输入，`CUB_200_2011`类被用来加载CUB_200_2011数据集。
+
+我们列出了和对应数据集相关的下载链接，关于CUB_200_2011数据集的分支文件夹、文件。
+
+如果你没有相应的数据集，请讲参数`download`设为 **true**
 ```python
     name: str = "Caltech-UCSD Birds-200-2011"
     link: str = "http://www.vision.caltech.edu/datasets/cub_200_2011/"

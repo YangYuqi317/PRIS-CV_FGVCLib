@@ -1,29 +1,29 @@
 # Tutorial 6: Learn about model
 
-In this part, we took the model apart and encapsulated each part of the model. We provide `backbones`, `encoders`, `heads`, `necks`, `sotas`, and `utils` for the model. You can select them separately to go to the component model.
+在这一部分，我们将模型进行拆分，并对其进行封装。我们为模型提供了 `backbones`, `encoders`, `heads`, `necks`, `sotas`, 和 `utils`这些组件，你可以分别选择它们组装模型。
 
-- **Backbone**: The backbone network most of time refers to the feature extraction network, its role is to extract the information in the picture, and then use the network, e.g. **ResNet**, **VGG**.
-- **Encoder**: The pooling layer can reduce the space size of the data body, so that the number of parameters in the network can be reduced, so that the computing resource consumption is reduced, and the overfitting can be effectively controlled.
-- **Neck**: The component between backbones and heads.
-- **Head**: The component for specific tasks.
-- **Sotas**: State-of-the-art model.
+- **Backbone**: 骨干网大多书的时候指特征提取网络，它的作用是提取图片中的信息，然后使用该网络, 常见的有： **ResNet**, **VGG**等.
+- **Encoder**: 池化层可以减小数据体的空间大小，从而减少网络中的参数数量，进而减少计算资源消耗，有效控制过拟合。
+- **Neck**: backbone 和 head 之间的组成部分
+- **Head**: 特定任务的组件
+- **Sotas**: 最先进的模型
 
 ## Backbone
-We mainly provide two categories backbone, ResNet and VGG.
-  
+
+我们主要提供两类backbone， ResNet 和 VGG.
+
 | ResNet          | VGG             |
 | resnet18        | vgg11           |
 | resnet34        | vgg13           |
 | resnet50        | vgg16           |
 | resnet101       | vgg19           |
-| resnet152       |                 |
-| resnet50_32x4d  |                 |
-| resnet101_32x8d |                 |
-| resnet50_bc     |                 |
-| resnet101_bc    |                 |
+| resnet152       |—————————————————|
+| resnet50_32x4d  |—————————————————|
+| resnet101_32x8d |—————————————————|
+| resnet50_bc     |—————————————————|
+| resnet101_bc    |—————————————————|
 
-
-In the fgvclib/models/backbones/__init__.py", we define a function `get_backbone` to return the backbone with the givenname. The given names are `resnet18`, `resnet34`, `resnet50`, `resnet101`, `resnet152`, `resnext50_32x4d`, `resnext101_32x8d`, `resnet50_bc`, `resnet101_bc`, `vgg11`, `vgg13`, `vgg16`, `vgg19`
+在"fgvclib/models/backbones/__init__.py"中，我们定义了`get_backbone`函数，根据给出的backbone名称返回对应的backbone。backbone名称如下：`resnet18`, `resnet34`, `resnet50`, `resnet101`, `resnet152`, `resnext50_32x4d`, `resnext101_32x8d`, `resnet50_bc`, `resnet101_bc`, `vgg11`, `vgg13`, `vgg16`, `vgg19`
 
 ```python
 def get_backbone(backbone_name):
@@ -33,25 +33,27 @@ def get_backbone(backbone_name):
 ```
 
 ### ResNet
-We download the ResNet-x model from pytorch, and define the functions to construct the ResNet-x model.
+
+我们从Pytorch中加载了ResNet-x模型，并且定义了函数用于构造ResNet-x模型。
 
 **resnet18:**
-- Args:
+- 参数:
 
-   pretrained (bool): If True, returns a model pre-trained on ImageNet
-   progress (bool): If True, displays a progress bar of the download to stderr
+   pretrained (bool): 如果该值为True，则返回在ImageNet上的预训练模型
+   progress (bool): 如果该值为True，则显示下载的进度条
 
-- Return:
+- 返回值:
 
    _resnet('resnet18', BasicBlock, [2, 2, 2, 2], cfg, progress, **kwargs)
 
-This function return the `_resnet`, and `_resnet` return the model. The `_resnet` has some input parameters about the model category.
 
-Other backbones are similar to the resnet18, the difference lies on the **return**.
+该函数返回`_resnet`，`_resnet`返回对应的模型，`_resnet`中包含关于模型类别的输入参数
+
+其他的backbone和resnet18类似，不同的地方在于返回值
 
 **resnet50_32x4d**
 
-- Return:
+- 返回值:
    
    _resnet('resnext50_32x4d', Bottleneck, [3, 4, 6, 3], cfg, progress=True, **kwargs)
 
@@ -63,7 +65,7 @@ kwargs['width_per_group'] = 4
 
 **resnet101_32x8d**
 
-- Return:
+- 返回值:
    _resnet('resnext101_32x8d', Bottleneck, [3, 4, 23, 3], cfg, progress=True, **kwargs)
 
 resnet101_32x8d needs to add the folllowing code:
@@ -73,39 +75,42 @@ kwargs['width_per_group'] = 8
 ```
 
 ### VGG
-We download the VGG-x model from pytorch, and define the functions to construct the VGG-x model.
+
+我们从Pytorch中加载了VGG-x模型，并且定义了函数用于构造VGG-x模型。
 
 **vgg11:**
-- Args:
+- 参数:
 
    pretrained (bool): If True, returns a model pre-trained on ImageNet
    progress (bool): If True, displays a progress bar of the download to stderr
 
-- Return:
+- 返回值:
 
    _vgg("vgg11", cfg, progress)
 
-This function return the `_vgg`, and `_vgg` return the model. The `_vgg` has some input parameters about the model category.
+该函数返回`_vgg`，`_vgg`返回对应的模型，`_vgg`中包含关于模型类别的输入参数
 
-Other backbones are similar to the vgg11, the difference lies on the **return**.
+其他的backbone和vgg11类似，不同的地方在于返回值
 
-### The example
-When you need to build a FGVC model, you can use it to get a backbone.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+### 举例
 
-In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the backbone name.
+当你需要建立一个FGVC模型，你可以使用它得到一个骨干网。
+在FGVCLib，我们根据配置构建FGVC模型，有关配置**configs**的更多细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+
+在`fgvclib/apis/build.py`，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了backbone名称。
+
 ```python
 from fgvclib.models.backbones import get_backbone
 
 backbone_builder = get_backbone(model_cfg.BACKBONE.NAME)
 backbone = backbone_builder(cfg=tltd(model_cfg.BACKBONE.ARGS))
-
 ```
 
 ## Encoders
-We provide three kind of pooling layer, `global average pooling`, `global max pooling` and `max pooling 2d`.
 
-In the fgvclib/models/encoders/__init__.py", we define a function `get_encoding` to return the encoder with the given name. And the given names are `global_avg_pooling`, `global_max_pooling`, `max_pooling_2d`
+我们提供了三种类型的池化层`global average pooling`, `global max pooling`和`max pooling 2d`
+
+在"fgvclib/models/encoders/__init__.py"中，我们定义了`get_encoding`函数，根据提供的池化层类型返回对应的编码器。给出的池化层名称有：`global_avg_pooling`, `global_max_pooling`, `max_pooling_2d`
 
 ```python
 def get_encoding(encoding_name):
@@ -113,13 +118,13 @@ def get_encoding(encoding_name):
         raise NotImplementedError(f"Encoding not found: {encoding_name}\nAvailable encodings: {__all__}")
     return globals()[encoding_name]
 ```
-### Global average pooling
-Firstly, we define a class named `GlobalAvgPooling` as global average pooling encoding.
-Then, we define a function named `global_avg_pooling`.
+### 全局平均池化
 
-### Global max pooling
-Firstly, we define a class named `GlobalMaxPooling` as global average pooling encoding.
-Then, we define a function named `global_max_pooling`.
+首先我们定义了一个类：`GlobalAvgPooling`作为全局平均池化编码器。然后我们定义了一个函数`global_avg_pooling`
+
+### 全局最大池化
+
+首先，我们定义了一个类：`GlobalMaxPooling`作为全局最大池化编码器。然后，我们定义了一个函数`global_max_pooling`
 
 ### Max pooling 2d
 
@@ -131,11 +136,11 @@ def max_pooling_2d(cfg):
     assert isinstance(cfg['stride'], int)
     return nn.MaxPool2d(kernel_size=cfg['kernel_size'], stride=cfg['stride'])
 ```
-### The example 
-When you need to build a FGVC model, you can use it to get a encoding.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+### 举例
 
-In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the encoding name.
+当你需要构建一个FGVC模型时，你可以使用它构建一个编码器。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+
+在`fgvclib/apis/build.py`中，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了编码器名称。
 ```python
 from fgvclib.models.encoders import get_encoding
 
@@ -148,9 +153,8 @@ if model_cfg.ENCODING.NAME:
 ```
 
 ## Necks
-We provide one kind neck for the fgvclib, `Multi-scale Convolution neck`.
 
-In the fgvclib/models/necks/__init__.py", we define a function `get_neck` to return the neck with the given name. And the given name is `multi_scale_conv`.
+我们为fgvclib提供了一种neck，`Multi-scale Convolution neck`，在"fgvclib/models/necks/__init__.py"中，我们定义了一个函数`get_neck`，根据给出的neck名称返回对应的neck。给出的neck名称有：`multi_scale_conv`
 
 ```python
 def get_neck(neck_name):
@@ -161,14 +165,15 @@ def get_neck(neck_name):
 ```
 
 ### Multi-scale Convolution neck
-Firstly, we define a class named `MultiScaleConv` as a Multi-scale Convolution neck.
-Then, we define a function named `multi_scale_conv`.
 
-### The example
-When you need to build a FGVC model, you can use it to get a neck.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+首先，我们定义一个类`MultiScaleConv`作为Multi-scale Convolution neck，然后，我们定义了一个函数`multi_scale_conv`。
 
-In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the neck name.
+### 举例
+
+当你需要构建一个FGVC模型时，你可以使用它构建一个neck。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+
+在`fgvclib/apis/build.py`中，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了neck名称。
+
 ```python
 from fgvclib.models.necks import get_neck
 
@@ -181,9 +186,8 @@ else:
 ```
 
 ## Heads
-We mainly provide two classifier, `classifier_1fc`, and `classifier_2fc`
 
-In the fgvclib/models/heads/__init__.py", we define a function `get_head` to return the head with the given name. And the given names are `classifier_1fc`, and `classifier_2fc`.
+我们主要提供两种分类器，`classifier_1fc`, and `classifier_2fc`，在"fgvclib/models/heads/__init__.py"中，我们定义了一个函数`get_head`，根据给出的head名称返回对应的head。给出的head名称有：`classifier_1fc`, and `classifier_2fc`
 
 ```python
 def get_head(head_name):
@@ -194,18 +198,19 @@ def get_head(head_name):
 ```
 
 ### Classifier_1FC
-Firstly, we define a class named `Classifier_1FC` as a classifier with one fully connected layer.
-Then, we define a function named `classifier_1fc`.
+
+首先，我们定义一个类：`Classifier_1FrC`作为具有一个全连接层的分类器，然后，我们定义一个函数`classifier_1fc`
 
 ### Classifier_2FC
-Firstly, we define a class named `Classifier_2FC` as a classifier with two fully connected layer.
-Then, we define a function named `classifier_2fc`.
 
-### The example
-When you need to build a FGVC model, you can use it to get a head.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+首先，我们定义一个类：`Classifier_1FrC`作为具有两个全连接层的分类器，然后，我们定义一个函数`classifier_1fc`
 
-In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the head name.
+### 举例
+
+当你需要构建一个FGVC模型时，你可以使用它构建一个head。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+
+在`fgvclib/apis/build.py`中，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了head名称。
+
 ```python
 from fgvclib.models.heads import get_head
 
@@ -214,9 +219,8 @@ head_builder = get_head(model_cfg.HEADS.NAME)
 ```
 
 ## Sotas
-We reproduced state-of-the-art models, `baseline_resnet50`, `mcl`, `pmg_resnet50`, `pmg_v2_resnet50`.
 
-In the fgvclib/models/sotas/__init__.py", we define a function `get_model` to return the head with the given name. And the given names are `PMG_ResNet50`, `PMG_V2_ResNet50`, `Baseline_ResNet50`, `MCL`.
+我们复现了几个最先进的模型，`baseline_resnet50`, `mcl`, `pmg_resnet50`, `pmg_v2_resnet50`，在"fgvclib/models/heads/__init__.py"中，我们定义了一个函数`get_model`，根据给出的model名称返回对应的model。给出的model名称有：`PMG_ResNet50`, `PMG_V2_ResNet50`, `Baseline_ResNet50`, `MCL`
 
 ```python
 def get_model(model_name):
@@ -226,15 +230,15 @@ def get_model(model_name):
     return globals()[model_name]
 ```
 
-- Baseline_resnet50: Using the resnet50 as the backbone to build a model which is the baseline.
-- MCL: This model was proposed in the paper "The Devil is in the Channels: Mutual-Channel Loss for Fine-Grained Image Classification", for more details about this method, see[MCL](https://arxiv.org/abs/2002.04264)
-- PMG: This model was proposed in the paper " Fine-Grained Visual Classiﬁcation via Progressive Multi-Granularity Training of Jigsaw Patches", for more details about this method, see [PMG](https://arxiv.org/abs/2003.03836v3)
+- Baseline_resnet50: 使用resnet50作为主干网络去构建模型作为基准模型
+- MCL: 这个模型在"The Devil is in the Channels: Mutual-Channel Loss for Fine-Grained Image Classification"论文中被提出，关于此模型的更多细节参考[MCL](https://arxiv.org/abs/2002.04264)
+- PMG: 这个模型在" Fine-Grained Visual Classiﬁcation via Progressive Multi-Granularity Training of Jigsaw Patches"论文中被提出, 关于此模型的更多细节参考[PMG](https://arxiv.org/abs/2003.03836v3)
 
-### The example
-When you need to build a FGVC model, you can use it to get a model.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+### 举例
 
-In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the model name.
+当你需要构建一个FGVC模型时，你可以使用它获得模型，在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的更多细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+
+在`fgvclib/apis/build.py`中，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了model名称
 
 ```python
 from fgvclib.models.sotas import get_model
@@ -243,10 +247,11 @@ model_builder = get_model(model_cfg.NAME)
 model = model_builder(backbone=backbone, encoding=encoding, necks=necks, heads=heads, criterions=criterions)
 ```
 
-## Build a model
-A model is made up **backbone**, **encoder**, **neck**, **head**, and **loss**. We take the model apart and you can combine them to build a new model or replicate other network. You should configure the model parameters in the configs in advance and then you can invoking these moudles to build model.
+## 构建一个模型
 
-### Take an example to show the process of building a model.
+一个完整的模型由**backbone**, **encoder**, **neck**, **head**, 和 **loss**这几部分组成，我们将模型的各个部分进行拆分，你可以自由的组合它们去构建一个新的模型，或者复现其他的工作，你需要事先在配置中设置好模型的参数，才能调用这些模块来构建模型。
+
+### 举例说明构建模型的过程
 ```python
 from fgvclib.metrics import get_metric
 from fgvclib.models.sotas import get_model
