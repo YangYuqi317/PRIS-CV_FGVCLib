@@ -5,7 +5,7 @@ Welcome to FGVCLib's documentation!
 .. toctree::
 
    :maxdepth: 2
-   :caption: Get Started
+   :caption: 开始你的第一步
    
    get_started.md
    model_zoo.md
@@ -13,7 +13,7 @@ Welcome to FGVCLib's documentation!
 .. toctree::
 
    :maxdepth: 2
-   :caption: Quick Run
+   :caption: 快速启动
 
    1_exist_data_model.md
    2_exist_data_new_model.md
@@ -22,7 +22,7 @@ Welcome to FGVCLib's documentation!
 .. toctree::
 
    :maxdepth: 2
-   :caption: Tutorials
+   :caption: 教程
 
    tutorials/index.rst
 
@@ -30,7 +30,7 @@ Welcome to FGVCLib's documentation!
 .. toctree::
 
    :maxdepth: 2
-   :caption: Utils
+   :caption: 工具
 
    useful_tools.md
 
@@ -38,6 +38,6 @@ Welcome to FGVCLib's documentation!
 .. toctree::
 
    :maxdepth: 2
-   :caption: Switch Language
+   :caption: 语言切换
 
    switch_language.md
