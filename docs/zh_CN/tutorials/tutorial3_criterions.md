@@ -1,4 +1,4 @@
-# Tutorial 3: Learn about criterions
+# 教程 3: 学习标准文件
 
 在"fgvclib/criterions"这个文件夹下，我们为fgvclib提供了不同了损失函数。
 

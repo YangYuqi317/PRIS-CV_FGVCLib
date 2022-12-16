@@ -1,4 +1,4 @@
-# Tutorial 4: Learn about datasets
+# 教程 4: 学习数据集加载文件
 
 在fgvclib中，我们主要使用鸟类的数据集：`CUB_200_2011`
 我们建立这个文件夹去加载数据集，我们定义了`get_dataset`函数，通过给定的数据集名称，返回对应的数据集。

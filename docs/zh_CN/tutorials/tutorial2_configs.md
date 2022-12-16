@@ -1,9 +1,9 @@
-# Tutorial 2: Learn about configs
+# 教程 2: 学习配置文件
 
 在这个文件夹中 "fgvclib/configs" 我们列出了关于FGVCLib的相关配置。
 在实验中我们对配置进行了模块化, 建立了 ```FGVCConfig``` 类去加载喝存储相关的参数。你可以使用 ```FGVCConfig```加载相关的配置。
 
-## Config File Structure
+## 配置文件结构
 
 在这个文件夹下"fgvclib/configs/config.py"有四种基本组件，```__init__```,```get_cfg```,```load```,```stringfy```.
 
@@ -129,7 +129,7 @@
   self.cfg.INTERPRETER.METHOD = "gradcam"
   self.cfg.INTERPRETER.TARGET_LAYERS = []
 ```
-## The example of the configs
+## 关于配置的举例
 
 在这个程序中 ```main.py```, 你可以导入关于配置的文件 ```from fgvclib.configs import FGVCConfig```, 并且使用它加载模型配置。
 

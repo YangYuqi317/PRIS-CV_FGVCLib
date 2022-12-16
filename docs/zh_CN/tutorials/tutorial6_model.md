@@ -1,4 +1,4 @@
-# Tutorial 6: Learn about model
+# 教程 6: 学习模型文件
 
 在这一部分，我们将模型进行拆分，并对其进行封装。我们为模型提供了 `backbones`, `encoders`, `heads`, `necks`, `sotas`, 和 `utils`这些组件，你可以分别选择它们组装模型。
 

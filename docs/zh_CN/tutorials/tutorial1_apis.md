@@ -1,4 +1,4 @@
-# Tutorial 1: Learn about apis
+# 教程 1: 学习接口文件
 
 在"fgvclib/api"这个文件夹下，我们为fgvclib设置了各类api接口。这里有四种类型的api接口：```build.py```, ```evluate_model.py```, ```save_model.py```, 和 ```update_model.py```。
 
@@ -10,7 +10,7 @@
 
 "fgvclib/apis/update_model"：提供了各种用于更新模型和记录损失的api。
 
-## Build
+## 模型构建
 
 **build_model**: 根据全局配置构建一个FGVC模型。
 - 参数:
@@ -76,7 +76,7 @@
 
     `t.List[NamedMetric]`: NamedMetric列表
 
-## Evaluate Model
+## 模型评估
 
 **evaluate_model**:对FGVC模型进行评估
 - 参数：
@@ -90,7 +90,7 @@
 
     `dict`: 结果的字典
 
-## Save Model
+## 模型保存
 
 **save_model**: 保存被训练的FGVC模型
 - 参数:
@@ -99,7 +99,7 @@
     `model (nn.Module)`: FGVC模型
     `logger (Logger)`: 日志对象
 
-## Update Model
+## 模型更新
 
 **update_model**: 更新FGVC模型并且记录损失
 - 参数:

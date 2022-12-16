@@ -1,4 +1,4 @@
-# Tutorial 5: Learn about metrics
+# 教程 5: 学习评价指标文件
 
 我们提供了三种评价标准：准确率`accuracy`、精确率`precision`、召回率`recall`作为训练和测试的结果。从"Torchmetrics"中调用者三种评价指标，同时，在"__init__"中设置了评价指标的列表`__all__ = ["accuracy", "precision", "recall"]`
 

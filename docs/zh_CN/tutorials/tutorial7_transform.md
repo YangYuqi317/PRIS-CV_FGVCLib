@@ -1,4 +1,4 @@
-# Tutorial 7: Learn about transforms
+# 教程 7: 学习转换文件
 
 我们引入`transforms`来处理图片，我们导入了六类转换的方法`resize`, `random crop`,`center crop`, `random horizontal flip`, `to tensor`. `normaliza`
 
