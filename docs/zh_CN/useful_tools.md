@@ -1,22 +1,22 @@
 # Learn about utils
-We add some tools for the fgvc, and the tools are about interpreter, logger, learning rate schedules, updating strategy, and visualization.
 
-## Interpreter
+我们为FGVCLib添加了一些工具，这些工具包括解释器、记录器、学习率表、更新策略和可视化。
 
-We chose the class activation map tool.
-We design a class named CAM, the class actication map tool is for explaning the classification result.
-All methods are from (pytorch_grad_cam)[git@github.com:jacobgil/pytorch-grad-cam.git]. The methods are gradcam, hirescam, scorecam, gradcam++, xgradcam, eigencam, eigengrafcam, layercam, fullgrad, gradcamelementeise.
+## 解释器
 
-There are some args for the class CAM:
+我们选择了类激活映射工具，我们设计了一个名为CAM的类，累计或映射工具用于解释分类结果。
+所有的方法君来自于(pytorch_grad_cam)[git@github.com:jacobgil/pytorch-grad-cam.git]。方法有：gradcam, hirescam, scorecam, gradcam++, xgradcam, eigencam, eigengrafcam, layercam, fullgrad, gradcamelementeise.
 
-- `model (nn.Module)`: The FGVC model
-- `target_layers (list)`: The layers used to get CAM weights
-- `use_cuda (bool)`: Wheter use gpu
-- `method (str)`: The available CAM methods
-- `aug_smooth (str)`: The smooth method has the effect of better centering the CAM around the objects
-- `eigen_smooth (str)`: The smooth method has the effect of removing a lot of noise.
+以下是关于类CAM的一些参数：
 
-In "fgvclib/utils/interpreter/__init__.py", we define a function named get_interpreter to return the interpreter with the given name. And the given name is `cam`.
+- `model (nn.Module)`: FGVC模型
+- `target_layers (list)`: 该层用于得到CAM权重
+- `use_cuda (bool)`: 是否使用gpu
+- `method (str)`: 可用的CAM方法
+- `aug_smooth (str)`: 平滑法具有更好的使CAM围绕物体居中的作用
+- `eigen_smooth (str)`: 平滑法具有移动噪声的作用
+
+在"fgvclib/utils/interpreter/__init__.py"中，我们定义了函数`get_interpreter`，根据给定的名称返回对应的解释器，给定的名称有：`cam`
 
 ```python
 def get_interpreter(interpreter_name):
@@ -33,8 +33,9 @@ def get_interpreter(interpreter_name):
     return globals()[interpreter_name]
 ```
 
-### The example
-It is used to build interpreter.
+### 举例
+
+以构建一个解释器为例
 
 ```python
 gvclib.utils.interpreter import get_interpreter, Interpreter
@@ -49,11 +50,11 @@ def build_interpreter(model: nn.Module, cfg: CfgNode) -> Interpreter:
     return get_interpreter(cfg.INTERPRETER.NAME)(model, cfg)
 ```
 
-## Logger
+## 记录器
 
-We define two types logger, `txt logger` and `wandb logger`.
+我们定义了两种记录器，`txt logger`和`wandb logger`
 
-In "fgvclib/utils/logger/__init__.py" we define a function named `get_logger` to return the logger with the given name, and the given names are `wandb_logger`, `txt_logger`
+在"fgvclib/utils/logger/__init__.py"中，我们定义了一个函数`get_logger`，根据给定的名称返回对应的记录器，个icing的名称有：`wandb_logger`, `txt_logger`
 
 ```python
 def get_logger(logger_name):
@@ -72,8 +73,9 @@ def get_logger(logger_name):
     return globals()[logger_name]
 ```
 
-### The example 
-It can be used to build a logger object or generate the logger.
+### 举例
+
+它可以用于构建记录器对象或生成记录器
 
 ```python
 def build_logger(cfg: CfgNode) -> Logger:
@@ -88,9 +90,9 @@ def build_logger(cfg: CfgNode) -> Logger:
     return get_logger(cfg.LOGGER.NAME)(cfg)
 ```
 
-## Learning rate schedules
+## 学习率表
 
-In "fgvclib/utils/lr_schedules/__init__.py" we define a function named `get_lr_schedule` to return the learning rate schedule with the given name, and the given name is `cosine_anneal_schedule`.
+在"fgvclib/utils/lr_schedules/__init__.py"中，我们定义了一个函数`get_lr_schedule`，根据给定的名称返回对应的学习率表，给定的名称有：`cosine_anneal_schedule`
 
 ```python
 def get_lr_schedule(lr_schedule_name):
@@ -109,7 +111,7 @@ def get_lr_schedule(lr_schedule_name):
     return globals()[lr_schedule_name]
 ```
 
-And we define the function named `cosine_anneal_schedule`
+并且，我们定义了函数 `cosine_anneal_schedule`
 
 ```python
 def cosine_anneal_schedule(optimizer, current_epoch, total_epoch):
@@ -122,8 +124,9 @@ def cosine_anneal_schedule(optimizer, current_epoch, total_epoch):
         optimizer.param_groups[i]['lr'] = float(current_lr / 2 * cos_out)
 ```
 
-### The example
-It can be used in the file `main.py` for the processing of training.
+### 举例
+
+可以在`main.py`文件中，在训练过程中使用它
 
 ```python
 from fgvclib.utils.lr_schedules import cosine_anneal_schedule
@@ -132,16 +135,17 @@ from fgvclib.utils.lr_schedules import cosine_anneal_schedule
 
 ```
 
-## Update strategy
-We provide three types update strategy contructor methods, `progressive updating with jigsaw`, `progressive updating consistency constraint`, and `general updating`.
+## 更新策略
 
-**progressive updating with jigsaw**: For more details about progressive updating with jigsaw, see "fgvclib/utils/update_strategy/progressibe_updating_with_jigsaw.py".
+我们提供了三种类型的更新策略构造方法：`progressive updating with jigsaw`, `progressive updating consistency constraint`, 和 `general updating`
 
-**progressive updating consistency constraint**: For more details about progressive updating consistency constraint, see "fgvclib/utils/update_strategy/progressive_updating_consistency_constraint.py".
+**progressive updating with jigsaw**: 有关用jigsaw渐进式更新的更多详细信息，参见文件"fgvclib/utils/update_strategy/progressibe_updating_with_jigsaw.py"
 
-**general updating**: For more details about general updating, see "fgvclib/utils/update_strategy/general_updating.py".
+**progressive updating consistency constraint**: 有关渐进式更新一致性约束的详细信息，参见文件"fgvclib/utils/update_strategy/progressive_updating_consistency_constraint.py"
 
-In "fgvclib/utils/update_strategy/__init__.py", we define a function named `get_update_strategy` to return the update stratrgy contructor method with the given name. And the given names are `progressive_updating_with_jigsaw`, `progressive_updating_consistency_constraint`, `general_updating`
+**general updating**: 有关一般更新的详细信息，参见"fgvclib/utils/update_strategy/general_updating.py"
+
+在"fgvclib/utils/update_strategy/__init__.py"中，我们定义了一个函数`get_update_strategy`，根据给定的名称返回对应的更新策略方法，给出的名称有：`progressive_updating_with_jigsaw`, `progressive_updating_consistency_constraint`, `general_updating`
 
 ```python
 def get_update_strategy(strategy_name):
@@ -160,11 +164,10 @@ def get_update_strategy(strategy_name):
 
 ```
 
-### The example 
+### 举例
+在更新模型时导入该模块，使用更新策略构造方法更新FGVC模型
 
-The update stratrgy contructor method is used to update the FGCV model, so we can import it when update model.
-
-In "fgvclib/apis/update_model.py", we import fgvclib.utils.update_strategy.
+在"fgvclib/apis/update_model.py"中，我们导入了fgvclib.utils.update_strategy
 
 ```python
 from fgvclib.utils.update_strategy import get_update_strategy
@@ -181,6 +184,6 @@ def update_model(model: nn.Module, optimizer: Optimizer, pbar:Iterable, strategy
         pbar.set_postfix(losses_info)
 ```
 
-## Visualization
+## 可视化
 
-We designed this module to visualize the results.
+我们设计该模块将结果进行可视化

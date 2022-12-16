@@ -25,8 +25,8 @@
 ## 方法
 
 ### MCL
-Please refer to [MCL](https://arxiv.org/abs/2002.04264) for details.
+更多细节请参考 [MCL](https://arxiv.org/abs/2002.04264) 
 
 ### PMG 
-Please refer to [PMG](https://arxiv.org/abs/2003.03836v3) for details.
+更多细节请参考 [PMG](https://arxiv.org/abs/2003.03836v3) 
 
