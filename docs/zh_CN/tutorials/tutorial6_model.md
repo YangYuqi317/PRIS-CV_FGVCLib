@@ -95,7 +95,7 @@ kwargs['width_per_group'] = 8
 ### 举例
 
 当你需要建立一个FGVC模型，你可以使用它得到一个骨干网。
-在FGVCLib，我们根据配置构建FGVC模型，有关配置**configs**的更多细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+在FGVCLib，我们根据配置构建FGVC模型，有关配置**configs**的更多细节，请参考[FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 在`fgvclib/apis/build.py`，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了backbone名称。
 
@@ -138,7 +138,7 @@ def max_pooling_2d(cfg):
 ```
 ### 举例
 
-当你需要构建一个FGVC模型时，你可以使用它构建一个编码器。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+当你需要构建一个FGVC模型时，你可以使用它构建一个编码器。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 在`fgvclib/apis/build.py`中，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了编码器名称。
 ```python
@@ -170,7 +170,7 @@ def get_neck(neck_name):
 
 ### 举例
 
-当你需要构建一个FGVC模型时，你可以使用它构建一个neck。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+当你需要构建一个FGVC模型时，你可以使用它构建一个neck。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 在`fgvclib/apis/build.py`中，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了neck名称。
 
@@ -207,7 +207,7 @@ def get_head(head_name):
 
 ### 举例
 
-当你需要构建一个FGVC模型时，你可以使用它构建一个head。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+当你需要构建一个FGVC模型时，你可以使用它构建一个head。在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的细节，请参考[FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 在`fgvclib/apis/build.py`中，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了head名称。
 
@@ -236,7 +236,7 @@ def get_model(model_name):
 
 ### 举例
 
-当你需要构建一个FGVC模型时，你可以使用它获得模型，在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的更多细节，请参考[FGVC Configs](https://torchmetrics.readthedocs.io/en/stable/classification/recall.html).
+当你需要构建一个FGVC模型时，你可以使用它获得模型，在FGVCLib中，我们根据配置构建FGVC模型，关于配置**configs**的更多细节，请参考[FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 在`fgvclib/apis/build.py`中，函数`build_model`根据配置构建FGVC模型，在`model_cfg`中，我们提前设置了model名称
 

@@ -1,6 +1,6 @@
 # Tutorial 4: Learn about datasets
 In FGVCLib, we mainly use the Birds dataset, `CUB_200_2011`.
-We build this folder to load the dataset, and we define the function `get_dataset` to return the dataset with the given name. The given names are `Dataset_AnnoFolder`, `Dataset_AnnoFile`, `CUB_200_2011`. 
+We build this folder to load the dataset. We define the function `get_dataset` to get the dataset dict, and using the function `dataset` to return the dataset
 
 ```python
 def get_dataset(dataset_name) -> FGVCDataset:
@@ -13,10 +13,25 @@ def get_dataset(dataset_name) -> FGVCDataset:
         Return: 
             The dataset contructor method.
     """
+```
 
-    if dataset_name not in globals():
-        raise NotImplementedError(f"Dataset {dataset_name} not found!\nAvailable datasets: {available_datasets()}")
-    return globals()[dataset_name]
+```python
+def dataset(name):
+    
+    def register_function_fn(cls):
+        if name in __DATASET_DICT__:
+            raise ValueError("Name %s already registered!" % name)
+        if not issubclass(cls, FGVCDataset):
+            raise ValueError("Class %s is not a subclass of %s" % (cls, FGVCDataset))
+        __DATASET_DICT__[name] = cls
+        return cls
+
+    return register_function_fn
+
+for file in os.listdir(os.path.dirname(__file__)):
+    if file.endswith('.py') and not file.startswith('_'):
+        module_name = file[:file.find('.py')]
+        module = importlib.import_module('fgvclib.datasets.' + module_name) 
 ```
 
 ## FGVC Dataset
@@ -28,6 +43,7 @@ CUB_200_2011 is the Caltech-UCSD Birds-200-2011 dataset.
 We list the relevant link, file, and dir about CUB_200_2011.
 
 If you don't have the dataset, please set the `download` **true**.
+
 ```python
     name: str = "Caltech-UCSD Birds-200-2011"
     link: str = "http://www.vision.caltech.edu/datasets/cub_200_2011/"

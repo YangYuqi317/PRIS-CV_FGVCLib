@@ -4,7 +4,7 @@ In this folder "fgvclib/criterions" we provide different loss functions for the 
 
 We provide four loss functions, `cross_entropy_loss`, `binary_cross_entropy_loss`, `mean_square_error_loss` and `mutual_channel_loss`
 
-You can choose which loss function you want to use, and you should set it in the "./configs". For more details about the configs please see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html)
+You can choose which loss function you want to use, and you should set it in the "./configs". For more details about the configs please see [FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html)
 
 | Loss functions               | Name                       |
 | ---------------------------- | -------------------------- |

@@ -13,7 +13,7 @@ There are 4 types apis interfaces in this folder, ```build.py```, ```evluate_mod
 
 
 ## Build
-We import the other modules to build the model, in this part, there are eight functions. The configs about the model are saved in the folder "./configs". For more detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html)
+We import the other modules to build the model, in this part, there are eight functions. The configs about the model are saved in the folder "./configs". For more detailes about the **configs** , see [FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html)
 
 **build_model**: Build a FGVC model according to config.
 - Args:
@@ -22,7 +22,7 @@ We import the other modules to build the model, in this part, there are eight fu
 
 - Returns:
 
-    `nn.Module`: The FGVC model.
+    `fgvclib.models.sota.FGVCSOTA`: The FGVC model.
 
 **build_logger**: Build a Logger object according to config.
 - Args:
@@ -40,7 +40,7 @@ We import the other modules to build the model, in this part, there are eight fu
 
 - Returns:
 
-    `transforms.Compose`: The transforms.Compose object in Pytorch.
+    `PyTorch transforms.Compose`: The transforms.Compose object in Pytorch.
 
 **build_dataset**: Build a dataloader for training or evaluation.
 - Args: 
@@ -50,6 +50,17 @@ We import the other modules to build the model, in this part, there are eight fu
     `cfg (CfgNode)`: The mode config of the dataset config.
     `mode(str)`: The split of the dataset.
     `transform`: Pytorch Transformer Compose.
+
+- Returns:
+
+    A FGVCDataset.
+
+**build_dataset**: Build a dataloader for training or evaluation.
+- Args:
+
+    `dataset (FGVCDataset)`: A FGVCDataset.
+    `mode_cfg (CfgNode)`: The mode config of the dataset config.
+    `sampler (Sampler)`: The dataloder sampler.
 
 - Returns:
 
@@ -93,7 +104,7 @@ We import the other modules to build the model, in this part, there are eight fu
 
 ## Evaluate Model
 
-We import the other modules to evaluate the model, in this part, there is one function. The configs about the model are saved in the folder "./configs". For more detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html)
+We import the other modules to evaluate the model, in this part, there is one function. The configs about the model are saved in the folder "./configs". For more detailes about the **configs** , see [FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html)
 
 **evaluate_model**: Evaluate the FGVC model according to config.
 - Args:
@@ -136,7 +147,7 @@ We design this module tp update the FGVC model and record losses.
 ## The example of using the apis
 When you do algorithm design, you need to import the apis ```from fgvclib.apis import * ```and call the interfaces. You can use the following functions directly, ```build_logger```,  ```build_criterion```, ```build_model```, ```build_metrics```, ```build_transforms```, ```build_dataset```, ```build_optimizer```, ```update_model```, ```evaluate_model```, ```save_model```, ```build_interpreter```
 
-- The example of building model
+### The example of building model
 ```python
 import os
 import torch

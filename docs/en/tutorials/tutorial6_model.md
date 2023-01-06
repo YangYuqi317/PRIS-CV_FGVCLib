@@ -79,7 +79,7 @@ Other backbones are similar to the vgg11, the difference lies on the **return**.
 
 ### The example
 When you need to build a FGVC model, you can use it to get a backbone.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the backbone name.
 
@@ -122,7 +122,7 @@ def max_pooling_2d(cfg):
 ```
 ### The example 
 When you need to build a FGVC model, you can use it to get a encoding.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the encoding name.
 
@@ -156,7 +156,7 @@ Then, we define a function named `multi_scale_conv`.
 
 ### The example
 When you need to build a FGVC model, you can use it to get a neck.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the neck name.
 ```python
@@ -193,7 +193,7 @@ Then, we define a function named `classifier_2fc`.
 
 ### The example
 When you need to build a FGVC model, you can use it to get a head.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the head name.
 ```python
@@ -222,7 +222,7 @@ def get_model(model_name):
 
 ### The example
 When you need to build a FGVC model, you can use it to get a model.
-In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://docs-yyq.readthedocs.io/en/latest/global_configs.html).
+In the FGVCLib, we build a FGVC model according to config. For detailes about the **configs** , see [FGVC Configs](https://pris-cv-fgvclib.readthedocs.io/en/latest/global_configs.html).
 
 In `fgvclib/apis/build.py`, there is a function build_model to build a FGVC model according to config. In the `model_cfg`, we have set the model name.
 
