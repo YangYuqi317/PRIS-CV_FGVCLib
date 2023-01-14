@@ -1,1 +1,0 @@
-## Baseline_ResNet50

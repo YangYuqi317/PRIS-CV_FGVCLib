@@ -8,6 +8,6 @@ In order to effectively identify contrastive clues among highly-confused categor
 
 ## Framework
 <div align=center>
-<img src="https://github.com/YangYuqi317/FGVCLib_docs/blob/main/src/mcl_loss.jpg?raw=true"/>
+<img src="https://github.com/YangYuqi317/PRIS-CV_FGVCLib/blob/main/docs/en/configs/framework/API-Net%20Framework.png?raw=true"/>
 </div>
 
