@@ -151,4 +151,8 @@ We used fgvclib to replicate the state-of-the-art model, and the following table
 Thanks for your attention! If you have any suggestion or question, you can leave a message here or contact us directly:
 
 - changdongliang@bupt.edu.cn
-- mazhanyu@bupt.edu.cns
+- mazhanyu@bupt.edu.cn
+
+## Others 
+In addition to fgvclib, we have developed a practical mini program on fine-grained visual classification, which can be accessed by scanning the two-dimensional code below.
+
