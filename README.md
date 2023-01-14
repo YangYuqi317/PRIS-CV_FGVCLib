@@ -145,3 +145,10 @@ We used fgvclib to replicate the state-of-the-art model, and the following table
 | CAL        |        90.6         |            89.6             |         89.5          |
 | TransFG    |        91.7         |            91.1             |         89.3          |
 | PIM        |        92.8         |            91.9             |         91.4          |
+
+## Contact
+
+Thanks for your attention! If you have any suggestion or question, you can leave a message here or contact us directly:
+
+- changdongliang@bupt.edu.cn
+- mazhanyu@bupt.edu.cns
