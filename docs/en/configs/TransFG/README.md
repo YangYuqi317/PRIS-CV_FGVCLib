@@ -9,5 +9,5 @@ Attention mechanism has demonstrated great potential in fine-grained visual reco
 ## Framework
 
 <div align=center>
-<img src="https://github.com/YangYuqi317/FGVCLib_docs/blob/main/src/mcl_method.jpg?raw=true"/>
+<img src="https://github.com/YangYuqi317/PRIS-CV_FGVCLib/blob/main/docs/en/configs/framework/TransFG%20framework.png?raw=true"/>
 </div>

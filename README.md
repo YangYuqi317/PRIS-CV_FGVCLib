@@ -141,9 +141,6 @@ We used fgvclib to replicate the state-of-the-art model, and the following table
 
 | SOTA       | Result of the paper | Result of the official code | Result of the FGVCLib |
 | -------------------------------------------------------------------------------------- |
-| MCL        |                     |                             |                       | 
-| PMG        |                     |                             |                       |  
-| PMG-v2     |                     |                             |                       |  
 | API-Net    |        88.1         |            87.2             |         86.8          |
 | CAL        |        90.6         |            89.6             |         89.5          |
 | TransFG    |        91.7         |            91.1             |         89.3          |
