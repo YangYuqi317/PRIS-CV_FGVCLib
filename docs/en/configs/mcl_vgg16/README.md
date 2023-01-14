@@ -7,7 +7,7 @@
 In this paper, we show that it is possible to cultivate subtle details without the need for overly complicated network designs or training mechanisms – a single loss is all it takes. The main trick lies with how we delve into individual feature channels early on, as opposed to the convention of starting from a consolidated feature map. The proposed loss function, termed as mutual-channel loss (MC-Loss), consists of two channel-specific components: a discriminality component and a diversity component. The discriminality component forces all feature channels belonging to the same class to be discriminative, through a novel channel-wise attention mechanism. The diversity component additionally constraints channels so that they become mutually exclusive across the spatial dimension. The end result is therefore a set of feature channels, each of which reflects different locally discriminative regions for a specific class. The MC-Loss can be trained end-to-end, without the need for any bounding-box/part annotations, and yields highly discriminative regions during inference.
 
 <div align=center>
-<img src="https://github.com/YangYuqi317/FGVCLib_docs/blob/main/src/mcl_method.jpg?raw=true"/>
+<img src="https://github.com/YangYuqi317/PRIS-CV_FGVCLib/blob/main/docs/en/configs/framework/MCL_1.png?raw=true"/>
 </div>
 
 The framework of a typical fine-grained classification network where MC-Loss is used. The MC-Loss function considers the output feature channels of the last convolutional layer as the input and gathers together with the cross-entropy (CE) loss function using a hyper-parameter µ.
@@ -15,7 +15,7 @@ The framework of a typical fine-grained classification network where MC-Loss is 
 ## Introduction
 we propose the mutual-channel loss (MC-Loss) function to effectively navigate the model focusing on different discriminative regions without any fine-grained bounding-box/part annotations.
 <div align=center>
-<img src="https://github.com/YangYuqi317/FGVCLib_docs/blob/main/src/mcl_loss.jpg?raw=true"/>
+<img src="https://github.com/YangYuqi317/PRIS-CV_FGVCLib/blob/main/docs/en/configs/framework/MCL_2.png?raw=true"/>
 </div>
 (a) Overview of the MC-Loss. The MC-Loss consists of (i) a discriminality component (left) that makes F to be class-aligned and discriminative, and (ii) a diversity component (right) that supervises the feature channels to focus on different local regions. (b) Comparison of feature maps before (left) and after (right) applying MC-Loss, where feature channels become class aligned, and each attending to different discriminate parts. 
 

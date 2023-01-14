@@ -9,7 +9,7 @@ Visual classification can be divided into coarse-grained and fine-grained classi
 ## Framework
 
 <div align=center>
-<img src="https://github.com/YangYuqi317/FGVCLib_docs/blob/main/src/mcl_loss.jpg?raw=true"/>
+<img src="https://github.com/YangYuqi317/PRIS-CV_FGVCLib/blob/main/docs/en/configs/framework/PIM%20framework.png?raw=true"/>
 </div>
 
 Schematic flow of the proposed plug-in module. Backbone Blockk
